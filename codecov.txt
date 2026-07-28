@@ -1,0 +1,2 @@
+codecov:
+  token: c7a4f41e-7855-41c3-ac2d-f547fa78516e
