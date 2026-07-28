@@ -3,7 +3,7 @@ layout: post
 title: "YOLOv8 Object Tracking TensorRT"
 subtitle: "YOLOv8 TensorRT - DeepSORT TensorRT - BYTETrack"
 author: "nabang1010"
-header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif"
+header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack-poster.jpg"
 # header-style: text
 header-mask: 0.5
 lang: en
@@ -38,7 +38,10 @@ All project [YOLOv8_Object_Tracking_TensorRT](https://github.com/nabang1010/YOLO
 ## Demo
 
 ### OpenCV + YOLOv8 + BYTETrack on NVIDA Geforce GTX 1660Ti
-![Demo BYTETrack](/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif "Demo BYTETrack")
+<video class="article-video" controls autoplay muted loop playsinline preload="metadata" poster="/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack-poster.jpg" aria-label="BYTETrack object tracking demo">
+  <source src="/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.mp4" type="video/mp4">
+  Your browser does not support embedded video.
+</video>
 
 
 
@@ -235,6 +238,5 @@ python3 yolov8_bytetrack_trt.py --show
 - [deepsort_tensorrt](https://github.com/GesilaA/deepsort_tensorrt)
 - [yolov5_deepsort_tensorrt](https://github.com/cong/yolov5_deepsort_tensorrt)
 - [ByteTrack](https://github.com/ifzhang/ByteTrack)
-
 
 
