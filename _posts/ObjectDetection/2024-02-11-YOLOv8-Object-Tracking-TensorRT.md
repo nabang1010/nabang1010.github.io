@@ -3,7 +3,7 @@ layout: post
 title: "YOLOv8 Object Tracking TensorRT"
 subtitle: "YOLOv8 TensorRT - DeepSORT TensorRT - BYTETrack"
 author: "nabang1010"
-header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack-poster.jpg"
+header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif"
 # header-style: text
 header-mask: 0.5
 lang: en
@@ -29,7 +29,7 @@ tags:
 
 
 
-Using OpenCV to capture video from camera or video file, then use **YOLOv8 TensorRT** to detect objects and **DeepSORT TensorRT** or **BYTETrack** to track objects. 
+Using OpenCV to capture video from camera or video file, then use **YOLOv8 TensorRT** to detect objects and **DeepSORT TensorRT** or **BYTETrack** to track objects.
 
 Support for both **NVIDIA dGPU** and **Jetson** devices.
 
@@ -38,10 +38,7 @@ All project [YOLOv8_Object_Tracking_TensorRT](https://github.com/nabang1010/YOLO
 ## Demo
 
 ### OpenCV + YOLOv8 + BYTETrack on NVIDA Geforce GTX 1660Ti
-<video class="article-video" controls autoplay muted loop playsinline preload="metadata" poster="/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack-poster.jpg" aria-label="BYTETrack object tracking demo">
-  <source src="/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.mp4" type="video/mp4">
-  Your browser does not support embedded video.
-</video>
+![Demo BYTETrack](/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif "Demo BYTETrack")
 
 
 
@@ -74,13 +71,13 @@ Test speed of YOLOv8 TensorRT model using `trtexec` from TensorRT
 
 Test speed of DeepSORT TensorRT model using `trtexec` from TensorRT
 
-`/usr/src/tensorrt/bin/trtexec` on NVIDIA Jetson 
+`/usr/src/tensorrt/bin/trtexec` on NVIDIA Jetson
 
 > batch size = 1
 
 | Model | Device | Throughput (qps) | Latency(ms) |
 | --- | --- | --- | --- |
-| `deepsort.engine` | NVIDIA dGPU GTX 1660Ti 6Gb| ~614.738 | ~1.52197 | 
+| `deepsort.engine` | NVIDIA dGPU GTX 1660Ti 6Gb| ~614.738 | ~1.52197 |
 | `deepsort.engine` | NVIDIA Jetson Xavier NX 8Gb | ~ | ~ |
 | `deepsort.engine` | NVIDIA Jetson Orin Nano 8Gb | ~546.135 | ~1.82227 |
 
@@ -147,7 +144,7 @@ python3 export-det.py \
 --device cuda:0
 ```
 
-The output `.onnx` model will be saved in **`models/to_export`** folder, move the model to **`models/onnx`** folder 
+The output `.onnx` model will be saved in **`models/to_export`** folder, move the model to **`models/onnx`** folder
 ```bash
 mv ../../models/to_export/yolov8n.onnx ../../models/onnx/yolov8n.onnx
 ```
@@ -164,7 +161,7 @@ python3 build.py \
 --fp16  \
 --device cuda:0
 ```
-The output `.engine` model will be saved in **`models/onnx`** folder, move the model to **`models/trt`** folder 
+The output `.engine` model will be saved in **`models/onnx`** folder, move the model to **`models/trt`** folder
 
 ```bash
 mv ../../models/onnx/yolov8n.engine ../../models/engine/yolov8n.engine
@@ -233,10 +230,8 @@ python3 yolov8_bytetrack_trt.py --show
 
 # References
 
-- [ultralytics](https://github.com/ultralytics/ultralytics) 
+- [ultralytics](https://github.com/ultralytics/ultralytics)
 - [YOLOv8-TensorRT](https://github.com/triple-Mu/YOLOv8-TensorRT)
 - [deepsort_tensorrt](https://github.com/GesilaA/deepsort_tensorrt)
 - [yolov5_deepsort_tensorrt](https://github.com/cong/yolov5_deepsort_tensorrt)
 - [ByteTrack](https://github.com/ifzhang/ByteTrack)
-
-

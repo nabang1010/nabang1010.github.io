@@ -1,23 +1,24 @@
 ---
 layout: default
-title: "Offline"
-description: "The blog is unavailable without a network connection."
+title: Offline
+description: "You are offline"
 header-img: "img/404-bg.jpg"
 permalink: /offline.html
 ---
 
-<main class="intro-header" id="main-content" style="background-image: url('{{ site.baseurl }}/{{ page.header-img }}')">
-    <div class="site-container">
-        <div class="error-heading">
-            <span class="error-code">Connection unavailable</span>
-            <h1>You are currently offline.</h1>
-            <p>Reconnect to the internet, then try loading the article again.</p>
-            <div class="error-actions">
-                <a href="{{ site.baseurl }}/"><i class="fa fa-home" aria-hidden="true"></i> Go home</a>
-                <button type="button" onclick="window.location.reload()"><i class="fa fa-refresh" aria-hidden="true"></i> Retry</button>
-            </div>
-        </div>
-    </div>
-</main>
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="site-heading" id="tag-heading">
+					<h1>Offline</h1>
+					<span class="subheading">{{ page.description }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
-<script>document.body.classList.add('page-fullscreen');</script>
+<script>
+	document.body.classList.add('page-fullscreen');
+</script>

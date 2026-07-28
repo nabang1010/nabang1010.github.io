@@ -1,49 +1,40 @@
 ---
 layout: page
-description: "Practical notes on computer vision, NVIDIA tooling, and production AI infrastructure."
-hero-kicker: "Bang Nguyen's technical blog"
+description: "Wellcome to my blog"
 ---
 
-<div class="article-list" aria-label="Latest articles">
-    {% for post in paginator.posts %}
-    <article class="post-preview article-card">
-        <div class="article-card__meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-            <span class="divider" aria-hidden="true"></span>
-            <span>{% if post.author %}{{ post.author }}{% else %}NAB{% endif %}</span>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
         </div>
-        <a href="{{ post.url | prepend: site.baseurl }}">
-            <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.subtitle %}
-            <p class="post-subtitle">{{ post.subtitle }}</p>
-            {% endif %}
-            <p class="post-content-preview">{{ post.content | strip_html | strip_newlines | truncate: 210 }}</p>
-        </a>
-        <div class="article-card__footer">
-            <div class="article-card__tags" aria-label="Topics">
-                {% for tag in post.tags limit:3 %}
-                <span class="article-tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-            <span class="read-link">Read article <span aria-hidden="true">&rarr;</span></span>
-        </div>
-    </article>
-    {% endfor %}
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
 </div>
-
+<hr>
+{% endfor %}
 {% if paginator.total_pages > 1 %}
-<nav aria-label="Article pagination">
-    <ul class="pager">
-        {% if paginator.previous_page %}
-        <li class="previous">
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer</a>
-        </li>
-        {% endif %}
-        {% if paginator.next_page %}
-        <li class="next">
-            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &rarr;</a>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
 {% endif %}

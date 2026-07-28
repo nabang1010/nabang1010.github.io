@@ -1,23 +1,23 @@
 ---
 layout: default
-title: "Page not found"
-description: "The page you requested could not be found."
+description: "This site does not exit :("
 header-img: "img/404-bg.jpg"
 permalink: /404.html
 ---
 
-<main class="intro-header" id="main-content" style="background-image: url('{{ site.baseurl }}/{{ page.header-img }}')">
-    <div class="site-container">
-        <div class="error-heading">
-            <span class="error-code">Error 404</span>
-            <h1>That page is not in the notebook.</h1>
-            <p>The link may be outdated, or the article may have moved. Return to the latest writing or search the archive.</p>
-            <div class="error-actions">
-                <a href="{{ site.baseurl }}/"><i class="fa fa-home" aria-hidden="true"></i> Latest articles</a>
-                <button type="button" data-search-open><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-            </div>
-        </div>
-    </div>
-</main>
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="site-heading" id="tag-heading">
+					<h1>404</h1>
+					<span class="subheading">{{ page.description }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
-<script>document.body.classList.add('page-fullscreen');</script>
+<script>
+	document.body.classList.add('page-fullscreen');
+</script>

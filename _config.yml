@@ -1,17 +1,17 @@
 # Site settings
-title: NAB Engineering Notes
-SEOTitle: NAB Engineering Notes
-header-img: img/home-bg-3-optimized.jpg
+title: nabang1010 Blog
+SEOTitle: nabang1010 Blog
+header-img: img/home-bg-3.jpg
 email: nabang1010.work@gmail.com
-description: "Practical engineering notes on computer vision, NVIDIA tooling, machine learning, and production AI infrastructure."
-keyword: "computer vision,deep learning,machine learning,NVIDIA,TensorRT,DeepStream,GStreamer,Kubernetes,AI engineering"
+description: "nabang1010 Blog | Machine Learning, Deeplearning, Computer Vision | This is NAB's personal blog"
+keyword: "nabblog,nabang1010.com,machinelearning,deeplearning,tri tue nhan tao,hoc sau,machine learning,deep learning,ai blog,thi giac may tinh,computer vision,ai viet nam,train google colab"
 url: "https://nabang1010.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/nabang1010/nabang1010.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "AI engineer writing about computer vision and production systems."
+sidebar-about-description: "NAB <br> Hanoi University of Science and Technology"
 sidebar-avatar: https://github.com/nabang1010.png # use absolute URL, seeing it's used in both `/` and `/about/`
 theme_default: "automatic"
 
