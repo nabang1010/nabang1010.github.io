@@ -7,7 +7,8 @@ header-img: "img/about-bg.jpg"
 
 <div class="en post-container">
     <article class="markdown-body entry-content container-lg f5" itemprop="text">
-        <p dir="auto">Hi, I'm <strong>Bang</strong> (<em>@nabang1010</em>), a student at Hanoi University of Science and Technology (<a href="https://www.hust.edu.vn/" rel="nofollow"><strong>HUST</strong></a>). I am a researcher at Smart Application And Network System Laboratory  (<a href="https://sanslab.vn/" rel="nofollow"><strong>SANSlab</strong></a>) - School of Electronics and Telecommunications (<a href="https://set.hust.edu.vn/" rel="nofollow"><strong>SET</strong></a>). My research interests are in Machine Learning, Deep Learning and Computer Vision.</p>
+        <div class="cert-seal" style="float: right; margin: 0 0 16px 16px;">&#9733; HUST<br>SANSLab<br>Researcher &#9733;</div>
+        <p dir="auto">Hi, I'm <strong>Bang</strong> (<em>@nabang1010</em>), Lead MLOps Engineer on the Camera AI Center team at VinSmart Future (VSF), and an Engineer's Degree graduate of Hanoi University of Science and Technology (<a href="https://www.hust.edu.vn/" rel="nofollow"><strong>HUST</strong></a>), Electronics and Telecommunications (<a href="https://set.hust.edu.vn/" rel="nofollow"><strong>SET</strong></a>). I was previously a research assistant at Smart Applications and Network System Laboratory (<a href="https://sanslab.vn/" rel="nofollow"><strong>SANSlab</strong></a>). My interests are in MLOps, Machine Learning, Deep Learning and Computer Vision — see my full background on the <a href="{{ site.baseurl }}/profile/">profile / CV page</a>.</p>
 
         <p dir="auto"><a href="https://nabang1010.com/" rel="nofollow"><img
                     src="https://camo.githubusercontent.com/c873e86c083c071c7fd068a17ab549b763fad7088681d6d831f68b32a4305b3a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f776562736974652d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d41626f75742e6d65266c6f676f436f6c6f723d7768697465"
@@ -173,7 +174,7 @@ header-img: "img/about-bg.jpg"
     }
     _render();
 </script>
-{% include gitalk.html id="about" %}
+{% include giscus.html %}
 {% if site.disqus.enable %}
 
 <div class="comment">

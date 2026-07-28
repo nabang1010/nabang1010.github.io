@@ -12,6 +12,14 @@
     "scripts": {
         "build": "bundle exec jekyll build",
         "serve": "bundle exec jekyll serve --livereload",
-        "preview": "python3 -m http.server 8020 --directory _site"
+        "preview": "python3 -m http.server 8020 --directory _site",
+        "assets": "grunt"
+    },
+    "devDependencies": {
+        "grunt": "1.5.3",
+        "grunt-banner": "0.6.0",
+        "grunt-contrib-less": "1.4.1",
+        "grunt-contrib-uglify": "1.0.0",
+        "grunt-contrib-watch": "1.0.0"
     }
 }
