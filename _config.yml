@@ -33,7 +33,7 @@ linkedin_username:  nabang1010
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
 paginate: 10
-exclude: ["less","node_modules","Gruntfile.js","package.json","package-lock.json","README.md","Gemfile","Gemfile.lock"]
+exclude: ["less","node_modules","vendor","vendor/bundle",".bundle","Gruntfile.js","package.json","package-lock.json","README.md","Gemfile","Gemfile.lock"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 

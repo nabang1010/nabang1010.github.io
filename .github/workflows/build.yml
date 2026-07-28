@@ -9,6 +9,8 @@ on:
 jobs:
   jekyll:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_PATH: ${{ runner.temp }}/bundle
     steps:
       - name: Checkout
         uses: actions/checkout@v4
