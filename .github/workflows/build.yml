@@ -10,7 +10,7 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     env:
-      BUNDLE_PATH: ${{ runner.temp }}/bundle
+      BUNDLE_PATH: /tmp/nabang-blog-bundle
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,7 +19,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
 
       - name: Build site
         run: bundle exec jekyll build
