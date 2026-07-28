@@ -1,0 +1,7 @@
+#footer_dark {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    background-color: #000;
+    background-position: 50% 50%;
+}

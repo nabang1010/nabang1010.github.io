@@ -1,0 +1,86 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords"  content="{{ site.keyword }}">
+    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+    <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
+    {% case page.layout %}
+    {% when 'post' %}
+    <meta property="og:locale" content="vi_VN" >
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="{{ page.excerpt | strip_html | truncate:200 }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.SEOTitle }}">
+    {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date: " %Y-%m-%dT%H:%M:%SZ" }}">
+    {% endif %}
+    {% if page.author %}
+    <meta property="article:publisher" content="https://www.facebook.com/nabang1010/">
+    <meta property="article:author" content="{{ page.author }}">
+    <meta property="article:section" content="{{ page.section }}" >
+    <meta property="fb:admins" content="https://www.facebook.com/nabang1010/">
+    {% endif %}
+    {% for keyword in page.seo-keywords %}
+    <meta property="article:tag" content="{{ keyword }}">
+    {% endfor %}
+    <meta name="twitter:card" content="summary_large_image" >
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}" >
+    <meta name="twitter:description" content="{{ page.excerpt | strip_html | truncate:200 }}" >
+    <meta name="twitter:site" content="@nabang1010" >
+    <meta name="twitter:creator" content="@nabang1010" >
+    <meta name="twitter:image" content="https://nabang1010.com/{% if page.header-img %}{{ page.header-img }}{% else %}img/icon_wechat.png{% endif %}" >
+    <meta name="twitter:label1" content="Written by" >
+    <meta name="twitter:data1" content="NAB" >
+    {% else %}
+    <meta property="og:locale" content="vi_VN" >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.SEOTitle }}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    {% endcase %}
+    <meta property="og:image" content='https://nabang1010.com/{% if page.header-img %}{{ page.header-img }}{% else %}img/icon_wechat.png{% endif %}'>
+    <meta property="og:image:secure_url" content='https://nabang1010.com/{% if page.header-img %}{{ page.header-img }}{% else %}img/icon_wechat.png{% endif %}'>
+    <meta property="og:image:width" content="750" >
+    <meta property="og:image:height" content="400" >
+    <meta property="og:image:alt" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}" >
+    <meta property="og:image:type" content="image/jpg" >
+    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://nabang1010.com/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://nabang1010.com/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://nabang1010.com/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://nabang1010.com/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://nabang1010.com/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://nabang1010.com/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://nabang1010.com/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://nabang1010.com/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nabang1010.com/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://nabang1010.com/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nabang1010.com/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://nabang1010.com/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nabang1010.com/img/favicon-16x16.png">  
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ site.baseurl }}/img/ms-icon-144x144.png">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" >
+    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}" >
+    <link rel="stylesheet" href="{{ "/css/footer-dark.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/syntax.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/gitalk.min.css" | prepend: site.baseurl }}">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" type="text/css">
+    <script src="{{ "/js/gitalk.min.js " | prepend: site.baseurl }}"></script>
+    <meta name="google-site-verification" content="az0xj2_y6oxZBmV_CE422xzTRCWSNiiGTGaPcfAMkCM" >
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6454284502864476" crossorigin="anonymous"></script>
+    <script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"nab1010",utcoffset:"7"}))};sessionStorage.setItem("_swa","1");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVX2BKQ5ZP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QVX2BKQ5ZP');
+    </script>
+    <script></script>
+</head>
