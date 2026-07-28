@@ -178,3 +178,8 @@ Temporary Items
 
 # debug file
 _site
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/bundle/
+*.code-profile
