@@ -1,90 +1,57 @@
-<div id="footer_dark"></div>
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+                <nav class="icon-label-nav">
                     {% if site.RSS %}
-                    <li>
-                        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-rss fa-inverse"></i></span>
+                        <span class="label">RSS</span>
+                    </a>
                     {% endif %}
                     {% if site.jianshu_username %}
-                            <li>
-                                <a target="_blank" rel="noopener noreferrer" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">简</i>
-                                    </span>
-                                </a>
-                            </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.jianshu.com/u/{{ site.jianshu_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa-inverse">简</i></span>
+                        <span class="label">Jianshu</span>
+                    </a>
                     {% endif %}
                     {% if site.twitter_username %}
-                    <li>
-                        <a href="https://twitter.com/{{ site.twitter_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a href="https://twitter.com/{{ site.twitter_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-twitter fa-inverse"></i></span>
+                        <span class="label">Twitter</span>
+                    </a>
                     {% endif %}
                     {% if site.zhihu_username %}
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa-inverse">知</i></span>
+                        <span class="label">Zhihu</span>
+                    </a>
                     {% endif %}
                     {% if site.weibo_username %}
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://weibo.com/{{ site.weibo_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://weibo.com/{{ site.weibo_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-weibo fa-inverse"></i></span>
+                        <span class="label">Weibo</span>
+                    </a>
                     {% endif %}
                     {% if site.facebook_username %}
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/{{ site.facebook_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/{{ site.facebook_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-facebook fa-inverse"></i></span>
+                        <span class="label">Facebook</span>
+                    </a>
                     {% endif %}
                     {% if site.github_username %}
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-github fa-inverse"></i></span>
+                        <span class="label">GitHub</span>
+                    </a>
                     {% endif %}
                     {% if site.linkedin_username %}
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+                        <span class="fa-stack fa-lg"><i class="fa fa-linkedin fa-inverse"></i></span>
+                        <span class="label">LinkedIn</span>
+                    </a>
                     {% endif %}
-                </ul>
+                </nav>
                 <a href="{{ site.url }}{{ site.baseurl }}/">
                     <img src="{{ site.baseurl }}/img/logo-white.png" alt="nab_logo" width="99" height="30" style="
                                     margin-top: 25px;
@@ -123,8 +90,6 @@
         });
     })();
 </script>
-<script src="{{ "/js/particles.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/js/footer-dark.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/hux-blog.min.js" | prepend: site.baseurl }}"></script>

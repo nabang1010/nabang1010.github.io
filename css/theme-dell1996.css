@@ -1,0 +1,519 @@
+/* ===========================================================
+ * theme-dell1996.css
+ * Retro 1996 catalog reskin — hard borders, flat tints, no
+ * shadows, no radius (except award-seal circles). Loaded last
+ * so it wins the cascade over bootstrap.css / hux-blog.css.
+ * See DESIGN.md for the full token/component spec this follows.
+ * ========================================================== */
+
+:root {
+    --color-primary: #e91d2a;
+    --color-yellow-sticker: #fcc20f;
+    --color-purple-stripe: #6a26a4;
+    --color-frame-ink: #000000;
+    --color-canvas: #ffffff;
+    --color-ink: #000000;
+    --color-link: #0000ee;
+    --color-on-primary: #ffffff;
+
+    --tint-olive: #8e8a25;
+    --tint-sage: #b3bd95;
+    --tint-salmon: #d77a7a;
+    --tint-peach: #e6915d;
+    --tint-lime: #c0d4a7;
+    --tint-sky: #9ab6c8;
+    --tint-steel: #a5b8c0;
+    --tint-periwinkle: #8c9ae0;
+
+    --font-display: "Arial Black", Arial, Helvetica, sans-serif;
+    --font-heading: Helvetica, Arial, sans-serif;
+    --font-body: "Times New Roman", Times, serif;
+
+    --space-xxs: 2px;
+    --space-xs: 4px;
+    --space-s: 6px;
+    --space-sm: 8px;
+    --space-m: 10px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 20px;
+    --space-xxl: 24px;
+    --space-section-sm: 32px;
+    --space-section: 40px;
+    --space-section-lg: 48px;
+}
+
+/* No dark-mode notion in 1996 — but the site already ships a toggle,
+   so give it a period-flat (not soft/atmospheric) inverted palette
+   rather than ripping the feature out. Borders track --color-frame-ink
+   so hairlines stay visible against a black canvas. */
+body.dark {
+    --color-canvas: #111111;
+    --color-ink: #f0f0f0;
+    --color-frame-ink: #f0f0f0;
+    --color-link: #7fa8ff;
+    --color-on-primary: #ffffff;
+}
+
+/* ---------- Global type & resets ---------- */
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background: var(--color-canvas);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+p, li, blockquote, .post-content-preview, article {
+    font-family: var(--font-body);
+}
+
+a {
+    color: var(--color-link);
+}
+a:hover, a:focus {
+    color: var(--color-primary);
+}
+
+/* Flatten every radius / soft shadow site-wide except the seal. */
+.btn,
+.form-control,
+input,
+textarea,
+select,
+.post-preview,
+.tags a,
+.tags .tag,
+.navbar-default .navbar-collapse,
+.side-catalog,
+.short-about img,
+.fa-stack,
+.gt-container,
+.gt-btn,
+.gt-avatar img,
+.giscus,
+.panel,
+.dropdown-menu {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* ---------- Page frame ---------- */
+
+.page-frame {
+    position: relative;
+    border: var(--space-sm) solid var(--color-frame-ink);
+    background: var(--color-canvas);
+    min-height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+    .page-frame { border-width: 4px; }
+}
+@media only screen and (max-width: 480px) {
+    .page-frame { border-width: 2px; }
+}
+
+/* ---------- Top banner (navbar-custom reskinned) ---------- */
+
+.navbar-custom {
+    position: relative !important;
+    background: var(--color-frame-ink) !important;
+    border-bottom: 1px solid var(--color-frame-ink);
+}
+.navbar-custom .navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-canvas) !important;
+}
+.navbar-custom .nav > li > a {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-canvas) !important;
+}
+.navbar-default .navbar-collapse {
+    background: var(--color-frame-ink);
+    border: 1px solid var(--color-canvas);
+}
+.navbar-default .navbar-toggle {
+    border-radius: 0 !important;
+}
+.navbar-default .navbar-toggle:active {
+    background-color: var(--color-canvas) !important;
+}
+
+.top-banner-sticker {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-frame-ink);
+    margin: 10px 6px;
+    text-decoration: none !important;
+}
+.top-banner-sticker--follow {
+    background: var(--color-yellow-sticker);
+    color: var(--color-ink) !important;
+}
+.top-banner-sticker--contact {
+    background: var(--color-frame-ink);
+    color: var(--color-primary) !important;
+    border-color: var(--color-canvas);
+}
+
+/* ---------- Hero / intro header ---------- */
+
+.intro-header .site-heading h1,
+.intro-header .page-heading h1,
+.intro-header .post-heading h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+.intro-header .subheading {
+    font-family: var(--font-body);
+    font-style: normal;
+    text-transform: none;
+}
+
+/* ---------- Section eyebrow blocks ---------- */
+
+.section-eyebrow {
+    border: 1px solid var(--color-frame-ink);
+    padding: var(--space-xxl) var(--space-lg);
+    margin: var(--space-section-sm) 0 var(--space-section-sm);
+    text-align: left;
+}
+.section-eyebrow h1,
+.section-eyebrow h2 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1;
+    margin: 0;
+    color: var(--color-ink);
+}
+.section-eyebrow-olive { background: var(--tint-olive); }
+.section-eyebrow-sage { background: var(--tint-sage); }
+.section-eyebrow-salmon { background: var(--tint-salmon); }
+.section-eyebrow-peach { background: var(--tint-peach); }
+.section-eyebrow-lime { background: var(--tint-lime); }
+.section-eyebrow-sky { background: var(--tint-sky); }
+.section-eyebrow-steel { background: var(--tint-steel); }
+.section-eyebrow-periwinkle { background: var(--tint-periwinkle); }
+
+/* ---------- Ribbon cards (post-preview) ---------- */
+
+.post-preview {
+    position: relative;
+    border: 1px solid var(--color-frame-ink);
+    background: var(--color-canvas);
+    margin: 0 0 var(--space-section) 0;
+    padding: 0 !important;
+}
+.post-preview > a {
+    display: block;
+    text-decoration: none !important;
+}
+.post-preview .ribbon-card-title {
+    background: var(--color-canvas);
+    border-bottom: 1px solid var(--color-frame-ink);
+    padding: var(--space-s) var(--space-lg);
+}
+.post-preview > a > .post-title,
+.post-preview .ribbon-card-title .post-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px !important;
+    margin: 0 !important;
+    color: var(--color-ink);
+}
+.post-preview .ribbon-card-body {
+    padding: var(--space-md) var(--space-lg);
+    padding-right: 30%;
+    min-height: 90px;
+    position: relative;
+}
+.post-preview > a > .post-subtitle {
+    font-family: var(--font-body);
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px !important;
+    color: var(--color-ink);
+    margin: 0 0 var(--space-xs) !important;
+}
+.post-preview .post-content-preview {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-ink);
+}
+.post-preview .post-content-preview:hover { color: var(--color-ink); }
+.post-preview > .post-meta {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 12px;
+    padding: var(--space-xs) var(--space-lg) var(--space-sm);
+    margin: 0 !important;
+    border-top: 1px solid var(--color-frame-ink);
+}
+.post-preview hr { display: none; }
+
+.ribbon-photo-notch {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    right: -1px;
+    width: 26%;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--color-frame-ink);
+    filter: drop-shadow(2px 2px 0 var(--color-frame-ink));
+}
+@media only screen and (max-width: 480px) {
+    .ribbon-photo-notch { position: static; display: block; width: 100%; height: 140px; margin-top: var(--space-md); }
+    .post-preview .ribbon-card-body { padding-right: var(--space-lg); }
+}
+
+.new-burst-sticker {
+    position: absolute;
+    top: -12px;
+    right: 6px;
+    background: var(--color-yellow-sticker);
+    color: var(--color-ink);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-frame-ink);
+    transform: rotate(-8deg);
+    z-index: 2;
+}
+
+/* Tint family, applied per post section/category */
+.ribbon-tint-olive .ribbon-card-body { background: var(--tint-olive); }
+.ribbon-tint-sage .ribbon-card-body { background: var(--tint-sage); }
+.ribbon-tint-salmon .ribbon-card-body { background: var(--tint-salmon); }
+.ribbon-tint-peach .ribbon-card-body { background: var(--tint-peach); }
+.ribbon-tint-lime .ribbon-card-body { background: var(--tint-lime); }
+.ribbon-tint-sky .ribbon-card-body { background: var(--tint-sky); }
+.ribbon-tint-steel .ribbon-card-body { background: var(--tint-steel); }
+.ribbon-tint-periwinkle .ribbon-card-body { background: var(--tint-periwinkle); }
+
+/* ---------- CTA block ---------- */
+
+.cta-block-red {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    border: 1px solid var(--color-frame-ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: var(--space-lg);
+    margin: var(--space-section-sm) 0;
+}
+.cta-block-red a { color: var(--color-on-primary); text-decoration: underline; }
+
+/* ---------- Cert seal ---------- */
+
+.cert-seal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 96px;
+    height: 96px;
+    border-radius: 9999px !important;
+    background: var(--color-primary);
+    color: var(--color-canvas);
+    border: 3px solid var(--color-canvas);
+    outline: 1px solid var(--color-frame-ink);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    padding: var(--space-sm);
+}
+
+/* ---------- Tags / chips / buttons / inputs ---------- */
+
+.tags a, .tags .tag {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    background: var(--color-canvas) !important;
+    color: var(--color-ink) !important;
+    border: 1px solid var(--color-frame-ink) !important;
+    padding: var(--space-xs) var(--space-md) !important;
+}
+.tags a:hover, .tags .tag:hover {
+    background: var(--color-frame-ink) !important;
+    color: var(--color-canvas) !important;
+}
+
+.btn {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid var(--color-frame-ink);
+}
+.btn-default, .button-secondary {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+}
+.btn-primary, .button-primary {
+    background: var(--color-frame-ink);
+    color: var(--color-canvas);
+    border-color: var(--color-frame-ink);
+}
+
+input, textarea, select, #search-input {
+    font-family: var(--font-body);
+    border: 1px solid var(--color-frame-ink) !important;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+}
+
+/* ---------- Pager ---------- */
+
+.pager li > a {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid var(--color-frame-ink) !important;
+    background: var(--color-canvas);
+    box-shadow: none !important;
+}
+
+/* ---------- Sidebar / about avatar & social icons ---------- */
+
+.short-about img {
+    border: 1px solid var(--color-frame-ink);
+    filter: drop-shadow(2px 2px 0 var(--color-frame-ink));
+}
+.fa-stack {
+    border: 1px solid var(--color-frame-ink);
+    background: var(--color-canvas);
+    width: 2em !important;
+    height: 2em !important;
+    line-height: 2em !important;
+}
+.fa-stack .fa-circle { display: none; }
+.fa-stack .fa-inverse { color: var(--color-ink) !important; }
+
+/* ---------- Footer band + icon-label nav ---------- */
+
+footer {
+    background: var(--color-canvas);
+    border-top: 1px solid var(--color-frame-ink);
+}
+footer .copyright {
+    font-family: var(--font-body);
+    font-size: 11px;
+}
+.icon-label-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xxl);
+    flex-wrap: wrap;
+    padding: var(--space-lg) 0 0;
+}
+.icon-label-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-ink);
+    text-decoration: none;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+}
+.icon-label-nav a .fa-stack { margin-bottom: var(--space-xxs); }
+.icon-label-nav a span.label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+/* ---------- Markdown pages (about / profile) ---------- */
+
+.markdown-body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3,
+.markdown-body h4, .markdown-body h5, .markdown-body h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-frame-ink);
+    padding-bottom: var(--space-xs);
+}
+.markdown-body a { color: var(--color-link); }
+.markdown-body code, .markdown-body pre {
+    border-radius: 0 !important;
+    border: 1px solid var(--color-frame-ink);
+}
+.markdown-body img { border: 1px solid var(--color-frame-ink); }
+
+/* ---------- Comments (giscus) ---------- */
+
+.giscus {
+    border: 1px solid var(--color-frame-ink);
+    padding: var(--space-lg);
+    margin-top: var(--space-section-sm);
+}
+
+/* ---------- Tag detail listing (tags.html) ---------- */
+
+.listing-seperator {
+    color: var(--color-ink) !important;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-frame-ink);
+    display: block;
+    padding-bottom: var(--space-xs);
+    margin: var(--space-section-sm) 0 var(--space-lg);
+}
+.one-tag-list .tag-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+.one-tag-list .post-preview > .post-meta {
+    position: static !important;
+    right: auto;
+    bottom: auto;
+}
+.one-tag-list .post-preview {
+    margin-left: 0 !important;
+}
+
+/* ---------- Side catalog (post TOC) ---------- */
+
+.side-catalog {
+    border: 1px solid var(--color-frame-ink) !important;
+}
+.side-catalog .catalog-body .active {
+    border-radius: 0 !important;
+    background-color: var(--color-yellow-sticker);
+}
+.side-catalog .catalog-body .active a {
+    color: var(--color-ink) !important;
+}

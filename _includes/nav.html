@@ -42,6 +42,16 @@
                         <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                     </li>
                     {% endif %}{% endfor %} -->
+                    {% if site.github_username %}
+                    <li>
+                        <a class="top-banner-sticker top-banner-sticker--follow" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}">&#9733; Follow</a>
+                    </li>
+                    {% endif %}
+                    {% if site.email %}
+                    <li>
+                        <a class="top-banner-sticker top-banner-sticker--contact" href="mailto:{{ site.email }}">&#9993; Contact</a>
+                    </li>
+                    {% endif %}
                     <li class="search-icon">
                         <a href="javascript:void(0)">
                             <i class="fa fa-search"></i>
