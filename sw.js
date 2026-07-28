@@ -2,127 +2,96 @@
  * sw.js
  * ===========================================================
  * Copyright 2016 @huxpro
- * Licensed under Apache 2.0 
+ * Licensed under Apache 2.0
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const PRECACHE = 'precache-v2';
+const RUNTIME = 'runtime-v2';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
-  "nabang1010.com",
-]
+  'nabang1010.github.io',
+  'nabang1010.com'
+];
 
+const isWhitelistedRequest = (request) => {
+  const url = new URL(request.url);
+  return HOSTNAME_WHITELIST.indexOf(url.hostname) > -1;
+};
 
-// The Util Function to hack URLs of intercepted requests
-const getFixedUrl = (req) => {
-  var now = Date.now();
-  url = new URL(req.url)
+const getFixedUrl = (request) => {
+  const url = new URL(request.url);
+  url.protocol = self.location.protocol;
+  url.search += (url.search ? '&' : '?') + 'cache-bust=' + Date.now();
+  return url.href;
+};
 
-  // 1. fixed http URL
-  // Just keep syncing with location.protocol 
-  // fetch(httpURL) belongs to active mixed content. 
-  // And fetch(httpRequest) is not supported yet.
-  url.protocol = self.location.protocol
+const isNavigationRequest = (request) => {
+  const accept = request.headers.get('accept') || '';
+  return request.mode === 'navigate' || (request.method === 'GET' && accept.includes('text/html'));
+};
 
-  // 2. add query for caching-busting.
-  // Github Pages served with Cache-Control: max-age=600
-  // max-age on mutable content is error-prone, with SW life of bugs can even extend.
-  // Until cache mode of Fetch API landed, we have to workaround cache-busting with query string.
-  // Cache-Control-Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=453190
-  url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
-  return url.href
-}
+const endWithExtension = (request) => Boolean(new URL(request.url).pathname.match(/\.\w+$/));
 
-// The Util Function to detect and polyfill req.mode="navigate"
-// request.mode of 'navigate' is unfortunately not supported in Chrome
-// versions older than 49, so we need to include a less precise fallback,
-// which checks for a GET request with an Accept: text/html header.
-const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')))
+const shouldRedirect = (request) => {
+  const url = new URL(request.url);
+  return isNavigationRequest(request) && !url.pathname.endsWith('/') && !endWithExtension(request);
+};
 
-// The Util Function to detect if a req is end with extension
-// Accordin to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
-// Any HTML's navigation has consistently mode="navigate" type="" and destination="document" 
-// including requesting an img (or any static resources) from URL Bar directly.
-// So It ends up with that regExp is still the king of URL routing ;)
-// P.S. An url.pathname has no '.' can not indicate it ends with extension (e.g. /api/version/1.2/)
-const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/))
+const getRedirectUrl = (request) => {
+  const url = new URL(request.url);
+  url.pathname += '/';
+  return url.href;
+};
 
-// Redirect in SW manually fixed github pages arbitray 404s on things?blah 
-// what we want:
-//    repo?blah -> !(gh 404) -> sw 302 -> repo/?blah 
-//    .ext?blah -> !(sw 302 -> .ext/?blah -> gh 404) -> .ext?blah 
-// If It's a navigation req and it's url.pathname isn't end with '/' or '.ext'
-// it should be a dir/repo request and need to be fixed (a.k.a be redirected)
-// Tracking https://twitter.com/Huxpro/status/798816417097224193
-const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathname.substr(-1) !== "/" && !endWithExtension(req))
-
-// The Util Function to get redirect URL
-// `${url}/` would mis-add "/" in the end of query, so we use URL object.
-// P.P.S. Always trust url.pathname instead of the whole url string.
-const getRedirectUrl = (req) => {
-  url = new URL(req.url)
-  url.pathname += "/"
-  return url.href
-}
-
-/**
- *  @Lifecycle Install
- *  Precache anything static to this version of your app.
- *  e.g. App Shell, 404, JS/CSS dependencies...
- *
- *  waitUntil() : installing ====> installed
- *  skipWaiting() : waiting(installed) ====> activating
- */
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(PRECACHE).then(cache => {
-      return cache.add('offline.html')
-      .then(self.skipWaiting())
-      .catch(err => console.log(err))
-    })
-  )
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(PRECACHE)
+      .then((cache) => cache.add('offline.html'))
+      .then(() => self.skipWaiting())
+      .catch((error) => console.log(error))
+  );
 });
 
-
-/**
- *  @Lifecycle Activate
- *  New one activated when old isnt being used.
- *
- *  waitUntil(): activating ====> activated
- */
-self.addEventListener('activate',  event => {
-  console.log('service worker activated.')
-  event.waitUntil(self.clients.claim());
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(
+        keys
+          .filter((key) => ![PRECACHE, RUNTIME].includes(key))
+          .map((key) => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
 });
 
+self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET' || !isWhitelistedRequest(request)) return;
 
-/**
- *  @Functional Fetch
- *  All network requests are being intercepted here.
- * 
- *  void respondWith(Promise<Response> r);
- */
-self.addEventListener('fetch', event => {
-  console.log(`fetch ${event.request.url}`)
-  if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-    if(shouldRedirect(event.request)){
-      event.respondWith(Response.redirect(getRedirectUrl(event.request)))
-      return;
-    }
-    const cached = caches.match(event.request);
-    const fixedUrl = getFixedUrl(event.request);
-    const fetched = fetch(fixedUrl, {cache: "no-store"});
-    const fetchedCopy = fetched.then(resp => resp.clone());
-    event.respondWith(
-      Promise.race([fetched.catch(_ => cached), cached])
-        .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
-    );
-    event.waitUntil(
-      Promise.all([fetchedCopy, caches.open(RUNTIME)])
-        .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => {/* eat any errors */})
-    );
+  if (shouldRedirect(request)) {
+    event.respondWith(Response.redirect(getRedirectUrl(request)));
+    return;
   }
+
+  const cached = caches.match(request);
+  const fetched = fetch(getFixedUrl(request), { cache: 'no-store' });
+  const fetchedCopy = fetched.then((response) => response.clone());
+
+  event.respondWith(
+    Promise.race([fetched.catch(() => cached), cached])
+      .then((response) => response || fetched)
+      .catch(() => caches.match('offline.html'))
+  );
+
+  event.waitUntil(
+    Promise.all([fetchedCopy, caches.open(RUNTIME)])
+      .then(([response, cache]) => {
+        if (response.ok) {
+          return cache.put(request, response);
+        }
+        return null;
+      })
+      .catch(() => {})
+  );
 });

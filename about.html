@@ -173,21 +173,7 @@ header-img: "img/about-bg.jpg"
     }
     _render();
 </script>
-{% if site.gitalk.enable %}
-<div id="gitalk-container"></div>
-    <script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '{{site.gitalk.clientID}}',
-        clientSecret: '{{site.gitalk.clientSecret}}',
-        repo: '{{site.gitalk.repo}}',
-        owner: '{{site.gitalk.owner}}',
-        admin: ['{{site.gitalk.admin}}'],
-        distractionFreeMode: {{site.gitalk.distractionFreeMode}},
-        id: 'about',
-    });
-    gitalk.render('gitalk-container');
-</script>
-{% endif %}
+{% include gitalk.html id="about" %}
 {% if site.disqus.enable %}
 
 <div class="comment">
@@ -206,4 +192,3 @@ header-img: "img/about-bg.jpg"
     })();
 </script>
 {% endif %}
-
