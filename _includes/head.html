@@ -1,7 +1,8 @@
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="description" content="{{ site.description }}">
     <meta name="keywords"  content="{{ site.keyword }}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
@@ -65,24 +66,12 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" >
     <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}" >
+    <link rel="stylesheet" href="{{ "/css/footer-dark.min.css" | prepend: site.baseurl }}">
     <link rel="stylesheet" href="{{ "/css/syntax.min.css" | prepend: site.baseurl }}">
-    {% if page.layout == 'post' and site.gitalk.enable %}
     <link rel="stylesheet" href="{{ "/css/gitalk.min.css" | prepend: site.baseurl }}">
-    {% endif %}
-    <link rel="stylesheet" href="{{ "/css/site.css" | prepend: site.baseurl }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script>
-        (function () {
-            var storedTheme = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
-    {% if page.layout == 'post' and site.gitalk.enable %}
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" type="text/css">
     <script src="{{ "/js/gitalk.min.js" | prepend: site.baseurl }}"></script>
-    {% endif %}
     <meta name="google-site-verification" content="az0xj2_y6oxZBmV_CE422xzTRCWSNiiGTGaPcfAMkCM" >
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6454284502864476" crossorigin="anonymous"></script>
     <script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!==0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"nab1010",utcoffset:"7"})).catch(function(){})};sessionStorage.setItem("_swa","1");</script>

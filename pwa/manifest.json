@@ -1,7 +1,7 @@
 {
-  "name": "NAB Engineering Notes",
-  "short_name": "NAB Notes",
-  "description": "Practical notes on computer vision, NVIDIA tooling, and production AI infrastructure.",
+  "name": "nabang1010 Blog",
+  "short_name": "nabang1010 Blog",
+  "description": "nabang1010 Blog| Machine Learning, Deep Learning, Computer Vision | This is nabang1010's personal blog",
   "icons": [{
     "src": "icons/android-icon-36x36.png",
     "sizes": "36x36",
@@ -38,8 +38,8 @@
     "type": "image/png",
     "density": "4.0"
    }],
-  "background_color": "#101518",
-  "theme_color": "#087b72",
+  "background_color": "#000",
+  "theme_color": "#000",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

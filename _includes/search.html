@@ -1,20 +1,17 @@
-<div class="search-page" role="dialog" aria-modal="true" aria-labelledby="search-title" aria-hidden="true" inert>
-    <div class="search-panel">
-        <div class="search-panel__header">
-            <div>
-                <span class="eyebrow">Article library</span>
-                <h2 id="search-title">Search the blog</h2>
-            </div>
-            <button class="icon-button search-icon-close" type="button" data-search-close aria-label="Close search" title="Close search">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </button>
-        </div>
-        <label class="sr-only" for="search-input">Search by title or topic</label>
-        <div class="search-input-wrap">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="search" id="search-input" placeholder="Search by title or topic" autocomplete="off">
-        </div>
-        <div id="search-results" class="search-results" aria-live="polite"></div>
-        <p class="search-hint">Press Esc to close</p>
+<div class="search-page" role="search">
+    <div class="search-icon-close-container">
+      <span class="search-icon-close">
+        <i class="fa fa-chevron-down"></i>
+      </span>
     </div>
-</div>
+    <div class="search-main container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <form action="{{ site.baseurl }}/search.json" method="get">
+          <input type="search" id="search-input" placeholder="Type and press Enter..." autocomplete="off">
+          </form>
+          <div id="search-results" class="mini-post-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
