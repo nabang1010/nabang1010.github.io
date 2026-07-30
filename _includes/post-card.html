@@ -1,12 +1,10 @@
 {% assign card_post = include.post %}
 {% assign card_tag = card_post.tags | first | default: card_post.section | default: "Note" %}
-{% assign card_span_class = "" %}
-{% if include.span == 2 %}{% assign card_span_class = "post-card--span-2" %}{% elsif include.span == 3 %}{% assign card_span_class = "post-card--span-3" %}{% endif %}
-<article class="post-card {{ include.tone | strip }} {{ card_span_class }}">
+<article class="post-card {{ include.tone | strip }}">
     <a class="post-card-link" href="{{ card_post.url | prepend: site.baseurl }}">
         <div class="post-card-meta">
             <span>{{ card_tag }}</span>
-            <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%B, %-d" }}</time>
+            <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%B %-d, %Y" }}</time>
         </div>
         <h2>{{ card_post.title }}</h2>
         <span class="post-card-arrow" aria-hidden="true">&rarr;</span>

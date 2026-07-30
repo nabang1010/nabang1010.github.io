@@ -6,8 +6,8 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v5';
-const RUNTIME = 'runtime-v5';
+const PRECACHE = 'precache-v6';
+const RUNTIME = 'runtime-v6';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   'nabang1010.github.io',

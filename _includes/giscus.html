@@ -23,15 +23,11 @@
         function sendTheme() {
             var iframe = document.querySelector('iframe.giscus-frame');
             if (!iframe) return;
-            var theme = document.body.classList.contains('dark') ? DARK_THEME : LIGHT_THEME;
+            var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? DARK_THEME : LIGHT_THEME;
             iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, 'https://giscus.app');
         }
 
-        document.addEventListener('click', function (e) {
-            if (e.target.closest && e.target.closest('.theme-switcher')) {
-                setTimeout(sendTheme, 50);
-            }
-        });
+        document.addEventListener('nab:theme-change', sendTheme);
 
         window.addEventListener('message', function (e) {
             if (e.origin !== 'https://giscus.app') return;
