@@ -1,6 +1,8 @@
 {% assign card_post = include.post %}
 {% assign card_tag = card_post.tags | first | default: card_post.section | default: "Note" %}
-<article class="post-card {{ include.tone | strip }}">
+{% assign card_span_class = "" %}
+{% if include.span == 2 %}{% assign card_span_class = "post-card--span-2" %}{% elsif include.span == 3 %}{% assign card_span_class = "post-card--span-3" %}{% endif %}
+<article class="post-card {{ include.tone | strip }} {{ card_span_class }}">
     <a class="post-card-link" href="{{ card_post.url | prepend: site.baseurl }}">
         <div class="post-card-meta">
             <span>{{ card_tag }}</span>
