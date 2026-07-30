@@ -45,7 +45,7 @@ Chi tiết hơn về từng thuật toán và triển khai của nó có thể t
 _**Hình 1:** DeepStream Plugin Gst-nvtracker_
 
 
-# Inputs anb Outputs
+## Inputs anb Outputs
 
 Phần này sẽ tổng hợp các inputs và outputs và phương tiện giao tiếp của plugin Gst-nvtracker.
 
@@ -82,7 +82,7 @@ Bảng sau tổng hợp các tính năng của plugin.
 | Support for enabling tracking-id display | Hỗ trợ enabling hoặc disabling hiển thị của tracking-id |
 | Support for tracking ID reset based on event | Dựa trên sử kiện pipeline (ví dụ: `GST_NVEVENT_STREAM_EOS` và `GST_NVEVENT_STREAM_RESET`), IDs theo dõi trên một luồng cụ thể có thể được đặt lại thành 0 hoặc ID mới |
 
-# Gst Properties
+## Gst Properties
 
 Bảng sau mô tả các thuộc tính của plugin Gst-nvtracker.
 
@@ -100,7 +100,7 @@ Bảng sau mô tả các thuộc tính của plugin Gst-nvtracker.
 | compute-hw | Công cụ tính toán để sử dụng để scaling. <br> 0 - Mặc định <br> 1 - GPU  <br> 2 - VIC (chỉ dành cho Jetson) | Integer, 0 -> 2 | compute-hw=1 |
 | tracking-id-reset-mode | Cho phép force-reset tracking ID dựa trên sự kiện pipeline. Sau khi đặt lại ID theo dõi được bật và sự kiện như vậy xảy ra, ID tracking thấp hơn 32-bit sẽ được reset về 0: <br> 0: Không đặt lại tracking ID khi sự kiện reset luồng hoặc EOS xảy ra <br> 1: Chấm dứt tất cả các trackers hiện có và chỉ định ID mới cho luồng khi quá trình reset luồng diễn ra (tức là `GST_NVEVENT_STEAM_RESET`) <br> 2: Để ID tracking bắt đầu từ 0 sau khi nhận được sự kiện EOS (tức là `GST_NVEVENT_STREAM_EOS`) (Lưu ý: chỉ ID theo dõi thấp hơn 32 bit mới bắt đầu từ 0) <br> 3: Enable cả lựa chọn 1 và 2 | Integer, 0 -> 3 | tracking-id-reset-mode=0 |
 
-# NvDsTracker API for Low-Level Tracker Library
+## NvDsTracker API for Low-Level Tracker Library
 
 Một thư viện low-level có thể được triển khai bằng API được xác định trong `sources/includes/nvdstracker.h`. Các phần của API đề cập dến `sources/includes/nvbufsurface.h`. Các tên của hàm API và cấu trúc dữ liệu có tiền tố là `NvMOT`, nghĩa là NVIDIA Multi-Object Tracker. Dưới đây là quy trình chung của API:
 

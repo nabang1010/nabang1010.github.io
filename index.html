@@ -1,25 +1,41 @@
 ---
-layout: page
-description: "Wellcome to my blog"
+layout: default
+description: "Practical notes on production AI, MLOps, computer vision, and engineering."
 ---
 
-<div class="section-eyebrow section-eyebrow-sage">
-    <h1>Latest Posts</h1>
-</div>
-{% for post in paginator.posts %}
-{% include post-card.html post=post %}
-{% endfor %}
+<section class="home-index{% if paginator.page > 1 %} is-paginated{% endif %}">
+    <header class="home-hero">
+        <a class="home-portrait" href="{{ site.baseurl }}/about/" aria-label="About Nguyen Anh Bang">
+            <img src="{{ site.baseurl }}/img/profile-avatar.jpg" alt="Nguyen Anh Bang" width="400" height="400">
+        </a>
+        <div class="home-identity">
+            <span class="home-kicker">NAB / Engineering notes</span>
+            <h1><span>Nguyen Anh </span><span>Bang</span></h1>
+            <p>AI Platform &amp; MLOps Engineer</p>
+        </div>
+    </header>
+
+    <div class="index-heading">
+        <span>Latest notes</span>
+        <p>Production AI, infrastructure, computer vision, and the systems connecting them.</p>
+    </div>
+
+    <div class="post-grid">
+        {% for post in paginator.posts %}
+        {% capture card_tone %}{% cycle 'tone-orange', 'tone-coral', 'tone-yellow', 'tone-blue' %}{% endcapture %}
+        {% include post-card.html post=post tone=card_tone %}
+        {% endfor %}
+    </div>
+</section>
+
 {% if paginator.total_pages > 1 %}
-<ul class="pager">
+<nav class="index-pagination" aria-label="Article pagination">
     {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><span aria-hidden="true">&larr;</span> Newer</a>
     {% endif %}
+    <span>Page {{ paginator.page }} / {{ paginator.total_pages }}</span>
     {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older <span aria-hidden="true">&rarr;</span></a>
     {% endif %}
-</ul>
+</nav>
 {% endif %}

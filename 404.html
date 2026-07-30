@@ -1,23 +1,16 @@
 ---
 layout: default
-description: "This site does not exit :("
-header-img: "img/404-bg.jpg"
+title: "Page not found"
+description: "The page you requested could not be found."
 permalink: /404.html
 ---
 
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">{{ page.description }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<section class="status-page">
+    <span class="status-code">404</span>
+    <div>
+        <span>/ Lost route</span>
+        <h1>Page not found.</h1>
+        <p>{{ page.description }}</p>
+        <a href="{{ site.baseurl }}/"><span aria-hidden="true">&larr;</span> Return to all posts</a>
+    </div>
+</section>

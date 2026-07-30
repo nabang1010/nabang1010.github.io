@@ -16,7 +16,7 @@ tags:
   - Design Patterm
 ---
 
-# What's a Design Pattern?
+## What's a Design Pattern?
 
 > **Design patterns** are typical solutions to commonly occurring problems in software design. They are like pre-made blue- prints that you can customize to solve a recurring design prob- lem in your code.
 
@@ -35,7 +35,7 @@ Bạn không thể chỉ tìm thấy một `patterm` và sao chép nó vào chư
 Một phép so sánh với một `algorithm` là một công thức nấu ăn: cả hai đều có các bước rõ ràng để đạt được một mục tiêu. Ngược lại, một `patterm` giống như một bản thiết kế: bạn có thể thấy kết quả và các tính năng của nó là gì, nhưng thứ tự thực hiện chính xác là do bạn quyết định.
 
 
-# What does the pattern consist of?
+## What does the pattern consist of?
 
 > Most patterns are described very formally so people can reproduce them in many contexts. Here are the sections that are usually present in a pattern description:
 
@@ -55,7 +55,7 @@ Hầu hết các `patterm` được mô tả rất hình thức để mọi ngư
 
 Một số danh mục `patterm` liệt kê các chi tiết hữu ích khác, chẳng hạn như tính ứng dụng của `patterm`, các bước triển khai và mối quan hệ với các `patterm` khác.
 
-# Classification of patterns
+## Classification of patterns
 
 > Design patterns differ by their complexity, level of detail and scale of applicability to the entire system being designed. I like the analogy to road construction: you can make an intersection safer by either installing some traffic lights or building an entire multi-level interchange with underground passages for pedestrians
 
@@ -81,13 +81,13 @@ Ngoài ra, tất cả các `patterm` có thể được phân loại theo mục 
 - **Structural patterns**: Giải thích cách lắp ráp các đối tượng và lớp vào các cấu trúc lớn hơn, đồng thời giữ cho cấu trúc linh hoạt và hiệu quả.
 - **Behavioral patterns**: Chăm sóc việc giao tiếp hiệu quả và phân công trách nhiệm giữa các đối tượng.
 
-# Who invented patterns?
+## Who invented patterns?
 
 
-# Why Should I Learn Patterns?
+## Why Should I Learn Patterns?
 
 ----
 
-# References
+## References
 
 * [Dive Into Design Partterms - Alexander Shvets]()

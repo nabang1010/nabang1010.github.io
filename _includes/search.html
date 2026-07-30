@@ -1,17 +1,15 @@
-<div class="search-page" role="search">
-    <div class="search-icon-close-container">
-      <span class="search-icon-close">
-        <i class="fa fa-chevron-down"></i>
-      </span>
+<div class="search-page" role="dialog" aria-modal="true" aria-label="Search articles" aria-hidden="true">
+    <div class="search-toolbar">
+        <span>/ Search archive</span>
+        <button type="button" class="search-icon-close" aria-label="Close search">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
     </div>
-    <div class="search-main container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <form action="{{ site.baseurl }}/search.json" method="get">
-          <input type="search" id="search-input" placeholder="Type and press Enter..." autocomplete="off">
-          </form>
-          <div id="search-results" class="mini-post-list"></div>
-        </div>
-      </div>
+    <div class="search-main">
+        <form class="search-form" action="{{ site.baseurl }}/search.json" method="get" onsubmit="return false;">
+            <label for="search-input">What are you looking for?</label>
+            <input type="search" id="search-input" placeholder="Type to search..." autocomplete="off" tabindex="-1">
+        </form>
+        <div id="search-results" class="search-results" aria-label="Search results" aria-live="polite"></div>
     </div>
-  </div>
+</div>

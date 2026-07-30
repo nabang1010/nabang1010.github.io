@@ -1,171 +1,98 @@
 ---
 layout: default
 ---
-<style type="text/css">
-    header.intro-header{
-        position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
-    }
 
-    {% if page.header-mask %}
-    header.intro-header .header-mask{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background: rgba(0,0,0, {{ page.header-mask }});
-    }
-    {% endif %}
-</style>
-<header class="intro-header" >
-    <div class="header-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    <h1>{{ page.title }}</h1>
-                    {% comment %}
-                        always create a h2 for keeping the margin , Hux
-                    {% endcomment %}
-                    {% comment %} if page.subtitle {% endcomment %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% comment %} endif {% endcomment %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </div>
+{% assign primary_tag = page.tags | first | default: page.section | default: "Article" %}
+{% assign reading_time = content | number_of_words | divided_by: 200 | plus: 1 %}
+
+<div class="reader-toolbar">
+    <div class="reader-toolbar-inner">
+        <a href="{{ site.baseurl }}/" data-smart-back><span aria-hidden="true">&larr;</span> Back to index</a>
+        <div class="reader-utilities">
+            <span>{{ reading_time }} min read</span>
+            <button type="button" class="copy-link" aria-label="Copy article link">
+                <i class="fa fa-link" aria-hidden="true"></i>
+            </button>
+            <span class="copy-status" role="status" aria-live="polite">Copy link</span>
         </div>
     </div>
-</header>
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
+</div>
 
-                {{ content }}
+<article class="reader-canvas article-reader">
+    <aside class="share-rail" aria-label="Share article">
+        <a aria-label="Share on X" href="https://twitter.com/share?url={{ site.url }}{{ page.url }}&amp;text={{ page.title | uri_escape }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a aria-label="Share on Facebook" href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a aria-label="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+    </aside>
 
-                <hr style="visibility: hidden;">
-                <div class="nab_share_button">
-                    <a href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
-                    <a href="https://twitter.com/share?url={{ site.url }}{{ page.url }}&amp;text={{ page.title }}&amp;hashtags=nabblog" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
-                    <a href="https://reddit.com/submit?url={{ site.url }}{{ page.url }}&amp;title={{ page.title }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-reddit"></i></a>
-               </div>
-
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        Previous<br>
-                        <span>{{page.previous.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        Next<br>
-                        <span>{{page.next.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-                {% include giscus.html %}
-                {% if site.disqus_username %}
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                {% endif %}
+    <div class="article-column">
+        <header class="article-heading">
+            <div class="article-meta">
+                <a href="{{ site.baseurl }}/tags/#{{ primary_tag | slugify }}">{{ primary_tag }}</a>
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B, %-d %Y" }}</time>
             </div>
+            <h1>{{ page.title }}</h1>
+            {% if page.subtitle and page.subtitle != "" %}
+            <p>{{ page.subtitle }}</p>
+            {% endif %}
+        </header>
+
+        <div class="post-container article-content">
+            {{ content }}
+        </div>
+
+        <footer class="article-footer">
+            <div class="article-tags" aria-label="Article tags">
+                {% for tag in page.tags %}
+                <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+                {% endfor %}
+            </div>
+
+            <nav class="article-pagination" aria-label="Adjacent articles">
+                {% if page.previous.url %}
+                <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}">
+                    <span>Previous note</span>
+                    <strong>{{ page.previous.title }}</strong>
+                </a>
+                {% endif %}
+                {% if page.next.url %}
+                <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}">
+                    <span>Next note</span>
+                    <strong>{{ page.next.title }}</strong>
+                </a>
+                {% endif %}
+            </nav>
+            {% include giscus.html %}
+        </footer>
+    </div>
+
+    <aside class="reader-nav">
+        {% include nav.html %}
         {% if page.catalog %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
-        {% endif %}
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-                {% if site.featured-tags %}
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        {% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                                <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
-                {% if site.friends %}
-                <hr>
-                <h5>OTHERS</h5>
-                <ul class="list-inline">
-                    {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
+        <div class="side-catalog">
+            <span>On this page</span>
+            <ul class="catalog-body"></ul>
         </div>
-    </div>
+        {% endif %}
+    </aside>
 </article>
-{% if site.disqus_username %}
-<script type="text/javascript">
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+<script>
+    (function () {
+        var copyButton = document.querySelector('.copy-link');
+        var copyStatus = document.querySelector('.copy-status');
+        if (!copyButton || !navigator.clipboard) return;
+        copyButton.addEventListener('click', function () {
+            navigator.clipboard.writeText(window.location.href).then(function () {
+                copyButton.classList.add('is-copied');
+                copyButton.setAttribute('aria-label', 'Article link copied');
+                if (copyStatus) copyStatus.textContent = 'Copied';
+                window.setTimeout(function () {
+                    copyButton.classList.remove('is-copied');
+                    copyButton.setAttribute('aria-label', 'Copy article link');
+                    if (copyStatus) copyStatus.textContent = 'Copy link';
+                }, 1600);
+            });
+        });
     })();
 </script>
-{% endif %}
-{% if site.anchorjs %}
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<script>
-    async("https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-{% endif %}

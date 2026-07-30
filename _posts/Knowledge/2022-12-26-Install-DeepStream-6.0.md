@@ -18,13 +18,13 @@ tags:
   - DeepStream
 ---
 
-# Hardware
+## Hardware
 
 | Device | Model | GPU | CPU | RAM |
 |--------|-------|-----|-----|-----|
 | Laptop | Lenovo Legion 5 15ARH05H | NVIDIA GeForce GTX 1660 Ti 6GB GDDR6 | AMD Ryzen™ 7 4800H 2.90GHz upto 4.20GHz, 8 cores 16 threads | 16GB LPDDR4 |
 
-# Requirements
+## Requirements
 
 - Ubuntu 18.04.6 LTS
 - GStreamer Versiom 1.14.5
@@ -32,7 +32,7 @@ tags:
 - NVIDIA CUDA Toolkit Version 11.4
 - TensorRT Version 8.2.5-1+cuda11.4
 
-# Install
+## Install
 
 ## Remove all previous DeepStream installations
   
@@ -152,6 +152,6 @@ sudo apt-get install ./deepstream-6.0_6.0.0-1_amd64.deb
 ```
 ----
 
-# References
+## References
 - [Quickstart Guide](https://docs.nvidia.com/metropolis/deepstream/6.0/dev-guide/text/DS_Quickstart.html#dgpu-setup-for-ubuntu)
 - [Install Guide TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-825/install-guide/index.html)

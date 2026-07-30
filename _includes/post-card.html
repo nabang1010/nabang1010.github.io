@@ -1,31 +1,12 @@
 {% assign card_post = include.post %}
-{% case card_post.section %}
-    {% when 'Classification' %}{% assign card_tint = 'sage' %}
-    {% when 'Knowledge' %}{% assign card_tint = 'sky' %}
-    {% when 'Object Detection' %}{% assign card_tint = 'peach' %}
-    {% when 'Tools' %}{% assign card_tint = 'periwinkle' %}
-    {% else %}{% assign card_tint = 'lime' %}
-{% endcase %}
-{% assign card_post_ts = card_post.date | date: "%s" | plus: 0 %}
-{% assign card_now_ts = site.time | date: "%s" | plus: 0 %}
-{% assign card_age_days = card_now_ts | minus: card_post_ts | divided_by: 86400 %}
-<div class="post-preview ribbon-tint-{{ card_tint }}">
-    <a href="{{ card_post.url | prepend: site.baseurl }}">
-        <div class="ribbon-card-title">
-            <h2 class="post-title">{{ card_post.title }}</h2>
+{% assign card_tag = card_post.tags | first | default: card_post.section | default: "Note" %}
+<article class="post-card {{ include.tone | strip }}">
+    <a class="post-card-link" href="{{ card_post.url | prepend: site.baseurl }}">
+        <div class="post-card-meta">
+            <span>{{ card_tag }}</span>
+            <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%B, %-d" }}</time>
         </div>
-        <div class="ribbon-card-body">
-            {% if card_age_days <= 30 %}<span class="new-burst-sticker">New!</span>{% endif %}
-            {% if card_post.subtitle %}
-            <h3 class="post-subtitle">{{ card_post.subtitle }}</h3>
-            {% endif %}
-            <div class="post-content-preview">{{ card_post.content | strip_html | truncate: 200 }}</div>
-            {% if card_post.header-img %}
-            <span class="ribbon-photo-notch" style="background-image: url('{{ card_post.header-img | prepend: site.baseurl }}');"></span>
-            {% endif %}
-        </div>
+        <h2>{{ card_post.title }}</h2>
+        <span class="post-card-arrow" aria-hidden="true">&rarr;</span>
     </a>
-    <p class="post-meta">
-        Posted by {% if card_post.author %}{{ card_post.author }}{% else %}{{ site.title }}{% endif %} on {{ card_post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
+</article>

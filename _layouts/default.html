@@ -3,13 +3,18 @@
 
 {% include head.html %}
 
-<body ontouchstart="">
+<body class="layout-{{ page.layout | default: 'default' }} page-{{ page.title | default: 'home' | slugify }}">
 
 <div class="page-frame">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {% unless page.layout == "post" or page.layout == "page" %}
     {% include nav.html %}
+    {% endunless %}
     {% include search.html %}
 
-    {{ content }}
+    <main id="main-content" tabindex="-1">
+        {{ content }}
+    </main>
 
     {% include footer.html %}
 </div>
