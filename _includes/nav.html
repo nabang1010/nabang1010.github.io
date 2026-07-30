@@ -15,8 +15,17 @@
             <li><a href="{{ site.baseurl }}/tags/#deepstream">DeepStream</a></li>
             <li><a href="{{ site.baseurl }}/tags/#kubernetes">Kubernetes</a></li>
             <li><a{% if page.url == "/about/" %} class="is-active" aria-current="page"{% endif %} href="{{ site.baseurl }}/about/">About</a></li>
-            <li><button class="search-icon" type="button">Search</button></li>
         </ul>
+        <div class="site-nav-tools" aria-label="Display and search tools">
+            <button class="search-icon" type="button">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <span>Search</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                <span class="theme-toggle-text">Dark theme</span>
+            </button>
+        </div>
     </div>
 </nav>
 <script>
@@ -24,6 +33,35 @@
         var nav = document.currentScript.previousElementSibling;
         var toggle = nav.querySelector('.site-nav-toggle');
         var menu = nav.querySelector('.site-nav-menu');
+        var themeToggle = nav.querySelector('.theme-toggle');
+        var themeIcon = themeToggle.querySelector('i');
+        var themeText = themeToggle.querySelector('.theme-toggle-text');
+
+        function updateThemeControl() {
+            var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            var label = 'Switch to ' + nextTheme + ' theme';
+            themeToggle.setAttribute('aria-label', label);
+            themeToggle.setAttribute('aria-pressed', currentTheme === 'dark' ? 'true' : 'false');
+            themeToggle.setAttribute('title', label);
+            themeIcon.className = nextTheme === 'dark' ? 'fa fa-moon-o' : 'fa fa-sun-o';
+            themeText.textContent = nextTheme.charAt(0).toUpperCase() + nextTheme.slice(1) + ' theme';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.querySelector('meta[name="theme-color"]').setAttribute(
+                'content',
+                theme === 'dark' ? '#181c1e' : '#f2f5f6'
+            );
+            try {
+                window.localStorage.setItem('nab-theme', theme);
+            } catch (error) {
+                // Theme still applies when storage is unavailable.
+            }
+            updateThemeControl();
+            document.dispatchEvent(new CustomEvent('nab:theme-change', { detail: { theme: theme } }));
+        }
 
         function closeMenu(restoreFocus) {
             nav.classList.remove('is-open');
@@ -34,6 +72,11 @@
         toggle.addEventListener('click', function () {
             var open = nav.classList.toggle('is-open');
             toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        themeToggle.addEventListener('click', function () {
+            var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
         document.addEventListener('click', function (event) {
@@ -51,5 +94,18 @@
             if (!event.target.closest('a, button')) return;
             closeMenu(false);
         });
+
+        window.addEventListener('storage', function (event) {
+            if (event.key !== 'nab-theme' || (event.newValue !== 'light' && event.newValue !== 'dark')) return;
+            document.documentElement.setAttribute('data-theme', event.newValue);
+            document.querySelector('meta[name="theme-color"]').setAttribute(
+                'content',
+                event.newValue === 'dark' ? '#181c1e' : '#f2f5f6'
+            );
+            updateThemeControl();
+            document.dispatchEvent(new CustomEvent('nab:theme-change', { detail: { theme: event.newValue } }));
+        });
+
+        updateThemeControl();
     })();
 </script>

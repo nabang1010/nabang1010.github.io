@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "Nguyen Anh Bang"
-hero-title: "Nguyen Anh Bang"
+title: "Bang"
+hero-title: "Bang Nguyen Anh"
 section: "Resume"
-description: "Lead MLOps Engineer working across AI platforms, infrastructure, and computer vision."
+description: "AI Engineer with experience across production AI, MLOps, infrastructure, and computer vision."
 header-img: "img/profile_bg.jpg"
 hidden: true
 sidebar: false
@@ -15,19 +15,33 @@ sidebar: false
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
                     <div class="subheading mb-5">
-                        <h4>Lead MLOps Engineer, Camera AI Center &mdash; VinSmart Future (VSF) <br></h4>
+                        <h4>AI Engineer &mdash; VinFast</h4>
                         <a href="https://www.hust.edu.vn" target="_blank" rel="noopener noreferrer">
                             <h3>Hanoi University of Science and Technology</h3>
                         </a>
                     </div>
-                    <p class="lead mb-3">
-                        Gia Lam, Hanoi, Vietnam &middot;
-                        <a href="mailto:nabang1010.work@gmail.com">nabang1010.work@gmail.com</a> &middot;
-                        <a href="tel:+84964687835">+84 964 687 835</a><br>
-                        <a href="https://www.linkedin.com/in/nabang1010" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot;
-                        <a href="https://github.com/nabang1010" target="_blank" rel="noopener noreferrer">GitHub</a> &middot;
-                        <a href="{{ site.baseurl }}/">nabang1010 Blog</a>
-                    </p>
+                    <address class="profile-contact" aria-label="Contact information">
+                        <dl class="profile-contact-details">
+                            <div>
+                                <dt>Location</dt>
+                                <dd>Gia Lam, Hanoi, Vietnam</dd>
+                            </div>
+                            <div>
+                                <dt>Email</dt>
+                                <dd><a href="mailto:nabang1010.work@gmail.com">nabang1010.work@gmail.com</a></dd>
+                            </div>
+                            <div>
+                                <dt>Phone</dt>
+                                <dd><a href="tel:+84964687835">+84 964 687 835</a></dd>
+                            </div>
+                        </dl>
+                        <nav class="profile-contact-links" aria-label="Professional profiles">
+                            <span>Profiles</span>
+                            <a href="https://www.linkedin.com/in/nabang1010" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://github.com/nabang1010" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="{{ site.baseurl }}/">Blog</a>
+                        </nav>
+                    </address>
                 </div>
             </section>
             <hr class="m-0" />
@@ -49,10 +63,25 @@ sidebar: false
                 <div class="resume-section-content">
                     <h2 class="mb-5">Experience</h2>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex experience-entry is-current flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--vinfast" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/vinfast.svg" alt="" width="481" height="481" loading="lazy" decoding="async">
+                        </span>
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">VinFast</h3>
+                            <div class="subheading mb-3">AI Engineer &middot; Hanoi, VN &middot; On-site</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Jul 2026 - Present</span></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--vinsmart" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/vinsmart-future.jpg" alt="" width="200" height="200" loading="lazy" decoding="async">
+                        </span>
                         <div class="flex-grow-1">
                             <h3 class="mb-0">VinSmart Future (VSF)</h3>
                             <div class="subheading mb-3">Lead MLOps - Camera AI Center &middot; Gia Lam, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Jan 2026 - Jun 2026</span></div>
                             <ul>
                                 <li>Designed and implemented AI Platform to manage Engineers, Models, Deployments, Monitoring, and Datasets.</li>
                                 <li>Built auto deployment and serving pipeline.</li>
@@ -60,13 +89,16 @@ sidebar: false
                                 <li><strong>Skills:</strong> FastAPI, Celery, Kafka, PostgreSQL, Redis, MinIO, Milvus, APISIX, Keycloak, Kubernetes, Helm, Harbor, Loki, Grafana, Prometheus, Tempo, Alloy, NVIDIA Triton, ArgoCD, Debezium, Docker, Python.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Dec 2025 - Present</span></div>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--viettel" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/viettel-high-tech.svg" alt="" width="192" height="74" loading="lazy" decoding="async">
+                        </span>
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Viettel High Technology Industries Corporation (VHT)</h3>
                             <div class="subheading mb-3">Lead AI Backend Cloud - AI Center &middot; Tay Ho, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Aug 2025 - Jan 2026</span></div>
                             <ul>
                                 <li>Architected and implemented an OTA (Over-the-Air) Cloud Platform for AI products on Edge devices.</li>
                                 <li>Designed and developed Cloud Services for centralized management of users, devices, hardware, software, etc.</li>
@@ -74,13 +106,16 @@ sidebar: false
                                 <li><strong>Skills:</strong> Kong, Celery, FastAPI, Kafka, MQTT, MinIO, Milvus, Loki, Grafana, Prometheus, Tempo, Alloy.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2025 - Dec 2025</span></div>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--vinbigdata" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/vinbigdata.jpg" alt="" width="200" height="200" loading="lazy" decoding="async">
+                        </span>
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">VinBigdata</h3>
+                            <h3 class="mb-0">VinBigData</h3>
                             <div class="subheading mb-3">AI Integration Engineer &middot; Times City, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">May 2023 - Jul 2025</span></div>
                             <ul>
                                 <li>Built training and evaluation pipelines for AI products, including model converting, quantization, evaluation, and monitoring.</li>
                                 <li>Built gRPC FastAPI face service for real-time face recognition using NVIDIA Triton Inference Server.</li>
@@ -95,25 +130,61 @@ sidebar: false
                                 <li><strong>Skills:</strong> GStreamer, NVIDIA DeepStream, Intel DLStreamer, CMake, ONNX, NVIDIA TensorRT, Intel OpenVINO Toolkit, Intel DL Workbench, Quantization, Kafka, Docker, Kubernetes, Helm Chart, Python, C++, gRPC, NVIDIA Triton, SQLite, PostgreSQL, ZeroMQ, Faiss, PGVector, Milvus, MinIO, Jenkins CI/CD, Airflow, MLFlow, ELK, Prometheus, Grafana.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Dec 2022 - July 2025</span></div>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--vinbigdata" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/vinbigdata.jpg" alt="" width="200" height="200" loading="lazy" decoding="async">
+                        </span>
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">VinBigdata</h3>
-                            <div class="subheading mb-3">AI Engineer Training Program &middot; Times City, HN, VN</div>
+                            <h3 class="mb-0">VinBigData</h3>
+                            <div class="subheading mb-3">AI Engineer Intern &middot; Times City, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Dec 2022 - Apr 2023</span></div>
                             <ul>
-                                <li>Studied and researched Python, Linear Algebra, Statistics, Machine Learning, Computer Vision, Natural Language Processing.</li>
+                                <li><strong>Skills:</strong> GStreamer, CMake.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--sanslab" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/sanslab.jpg" alt="" width="200" height="200" loading="lazy" decoding="async">
+                        </span>
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Smart Applications and Network System Laboratory (SANSlab)</h3>
+                            <div class="subheading mb-3">Research Assistant &middot; Advisor: <a href="https://scholar.google.com.vn/citations?user=l7KvRegAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Assoc. Prof. Phat Nguyen Huu</a> &middot; SET, HUST, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Dec 2019 - Apr 2023</span></div>
+                            <ul>
+                                <li>Researched Machine Learning, Deep Learning, Computer Vision, Object Detection, and Object Tracking.</li>
+                                <li>Deployed models on hardware devices and servers.</li>
+                                <li><strong>Skills:</strong> Altium, Proteus, Full-Stack Development, TensorFlow, PyTorch, NVIDIA DeepStream, Computer Vision, Deep Learning, Machine Learning, C++, HTML, CSS, JavaScript, PHP, MySQL.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--vingroup" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/vingroup.svg" alt="" width="1024" height="648" loading="lazy" decoding="async">
+                        </span>
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Vingroup</h3>
+                            <div class="subheading mb-3">AI Engineer Training Program &middot; Hanoi, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Jul 2022 - Nov 2022</span></div>
+                            <ul>
+                                <li>Studied and researched Python, Linear Algebra, Statistics, Machine Learning, Computer Vision, and Natural Language Processing.</li>
                                 <li><strong>Skills:</strong> Linear Algebra, Statistics, Natural Language Processing (NLP), Computer Vision, Machine Learning.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2022 - Nov 2022</span></div>
                     </div>
 
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex experience-entry flex-column flex-md-row justify-content-between mb-5">
+                        <span class="experience-logo experience-logo--viettel" aria-hidden="true">
+                            <img src="{{ site.baseurl }}/img/companies/viettel-high-tech.svg" alt="" width="192" height="74" loading="lazy" decoding="async">
+                        </span>
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Viettel High Technology Industries Corporation (VHT)</h3>
                             <div class="subheading mb-3">R&amp;D Image Processing Algorithm Engineer Intern &middot; Thach That, HN, VN</div>
+                            <div class="flex-shrink-0"><span class="text-primary">Jul 2021 - Sep 2021</span></div>
                             <ul>
                                 <li>Learned basic math operations on images.</li>
                                 <li>Researched and implemented image fusion algorithms from the paper "Infrared and visible image fusion using total variation model".</li>
@@ -121,20 +192,6 @@ sidebar: false
                                 <li><strong>Skills:</strong> Computer Vision, Image Processing, Python, MATLAB.</li>
                             </ul>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2021 - Sept 2021</span></div>
-                    </div>
-
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Smart Applications and Network System Laboratory (SANSlab)</h3>
-                            <div class="subheading mb-3">Research Assistant &middot; Advisor: <a href="https://scholar.google.com.vn/citations?user=l7KvRegAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Assoc. Prof. Phat Nguyen Huu</a> &middot; SET, HUST, HN, VN</div>
-                            <ul>
-                                <li>Researched Machine Learning, Deep Learning, Computer Vision, Object Detection, and Object Tracking.</li>
-                                <li>Deployed models on hardware devices and servers.</li>
-                                <li><strong>Skills:</strong> Altium, Proteus, Full-Stack Development, TensorFlow, PyTorch, NVIDIA DeepStream, Computer Vision, Deep Learning, Machine Learning, C++, HTML, CSS, JavaScript, PHP, MySQL.</li>
-                            </ul>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">Nov 2019 - March 2023</span></div>
                     </div>
 
                 </div>

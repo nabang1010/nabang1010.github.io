@@ -5,12 +5,12 @@ description: "Practical notes on production AI, MLOps, computer vision, and engi
 
 <section class="home-index{% if paginator.page > 1 %} is-paginated{% endif %}">
     <header class="home-hero">
-        <a class="home-portrait" href="{{ site.baseurl }}/about/" aria-label="About Nguyen Anh Bang">
-            <img src="{{ site.baseurl }}/img/profile-avatar.jpg" alt="Nguyen Anh Bang" width="400" height="400">
+        <a class="home-portrait" href="{{ site.baseurl }}/about/" aria-label="About Bang Nguyen Anh">
+            <img src="{{ site.baseurl }}/img/profile-avatar.jpg" alt="Bang Nguyen Anh" width="400" height="400">
         </a>
         <div class="home-identity">
             <span class="home-kicker">NAB / Engineering notes</span>
-            <h1><span>Nguyen Anh </span><span>Bang</span></h1>
+            <h1><span>Bang Nguyen </span><span>Anh</span></h1>
             <p>AI Platform &amp; MLOps Engineer</p>
         </div>
     </header>
@@ -20,20 +20,10 @@ description: "Practical notes on production AI, MLOps, computer vision, and engi
         <p>Production AI, infrastructure, computer vision, and the systems connecting them.</p>
     </div>
 
-    {% assign grid_total = paginator.posts.size %}
-    {% assign grid_remainder = grid_total | modulo: 3 %}
-    {% assign grid_trailing_start = grid_total | minus: grid_remainder %}
-    {% assign grid_first_trailing_index = grid_trailing_start | plus: 1 %}
     <div class="post-grid">
         {% for post in paginator.posts %}
         {% capture card_tone %}{% cycle 'tone-orange', 'tone-coral', 'tone-yellow', 'tone-blue' %}{% endcapture %}
-        {% assign card_span = 1 %}
-        {% if grid_remainder == 1 and forloop.index > grid_trailing_start %}
-            {% assign card_span = 3 %}
-        {% elsif grid_remainder == 2 and forloop.index == grid_first_trailing_index %}
-            {% assign card_span = 2 %}
-        {% endif %}
-        {% include post-card.html post=post tone=card_tone span=card_span %}
+        {% include post-card.html post=post tone=card_tone %}
         {% endfor %}
     </div>
 </section>
