@@ -20,10 +20,20 @@ description: "Practical notes on production AI, MLOps, computer vision, and engi
         <p>Production AI, infrastructure, computer vision, and the systems connecting them.</p>
     </div>
 
+    {% assign grid_total = paginator.posts.size %}
+    {% assign grid_remainder = grid_total | modulo: 3 %}
+    {% assign grid_trailing_start = grid_total | minus: grid_remainder %}
+    {% assign grid_first_trailing_index = grid_trailing_start | plus: 1 %}
     <div class="post-grid">
         {% for post in paginator.posts %}
         {% capture card_tone %}{% cycle 'tone-orange', 'tone-coral', 'tone-yellow', 'tone-blue' %}{% endcapture %}
-        {% include post-card.html post=post tone=card_tone %}
+        {% assign card_span = 1 %}
+        {% if grid_remainder == 1 and forloop.index > grid_trailing_start %}
+            {% assign card_span = 3 %}
+        {% elsif grid_remainder == 2 and forloop.index == grid_first_trailing_index %}
+            {% assign card_span = 2 %}
+        {% endif %}
+        {% include post-card.html post=post tone=card_tone span=card_span %}
         {% endfor %}
     </div>
 </section>
