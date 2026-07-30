@@ -41,7 +41,7 @@ body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    padding: 72px 40px;
+    padding: 40px 24px;
     color: var(--white);
     background: var(--stage);
     font-family: var(--font-sans);
@@ -86,8 +86,8 @@ img {
 .page-frame {
     position: relative;
     width: 100%;
-    max-width: 1500px;
-    min-height: calc(100vh - 144px);
+    max-width: 1800px;
+    min-height: calc(100vh - 80px);
     margin: 0 auto;
     overflow: hidden;
     background: var(--ink);
@@ -295,7 +295,7 @@ main {
 
 .post-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     border-top: 1px solid var(--rule-dark);
     border-left: 1px solid var(--rule-dark);
 }
@@ -303,11 +303,19 @@ main {
 .post-card {
     position: relative;
     min-width: 0;
-    min-height: 270px;
+    min-height: 300px;
     border-right: 1px solid var(--rule-dark);
     border-bottom: 1px solid var(--rule-dark);
     background: var(--ink);
     transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.post-card--span-2 {
+    grid-column: span 2;
+}
+
+.post-card--span-3 {
+    grid-column: span 3;
 }
 
 .post-card:hover,
@@ -320,8 +328,8 @@ main {
 .post-card-link {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    min-height: 270px;
-    padding: 22px 22px 18px;
+    min-height: 300px;
+    padding: 30px 28px 22px;
     color: var(--white);
     text-decoration: none;
 }
@@ -358,11 +366,15 @@ main {
     margin: 24px 0;
     color: var(--white);
     font-family: var(--font-mono);
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
     line-height: 1.4;
     text-align: center;
     overflow-wrap: anywhere;
+}
+
+.post-card--span-3 h2 {
+    font-size: 26px;
 }
 
 .post-card-arrow {
@@ -1672,6 +1684,11 @@ main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .post-card--span-2,
+    .post-card--span-3 {
+        grid-column: span 1;
+    }
+
     .reader-toolbar {
         min-height: 46px;
     }
@@ -1808,6 +1825,11 @@ main {
 
     .post-grid {
         grid-template-columns: 1fr;
+    }
+
+    .post-card--span-2,
+    .post-card--span-3 {
+        grid-column: span 1;
     }
 
     .post-card,
