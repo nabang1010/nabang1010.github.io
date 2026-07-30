@@ -16,11 +16,11 @@ tags:
   - Design Patterm
 ---
 
-# SOLID Principles
+## SOLID Principles
 
 
 ----
 
-# References
+## References
 
 * [Dive Into Design Partterms - Alexander Shvets]()

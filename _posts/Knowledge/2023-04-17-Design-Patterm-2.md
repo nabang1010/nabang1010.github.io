@@ -16,7 +16,7 @@ tags:
   - Design Patterm
 ---
 
-# Features of Good Design
+## Features of Good Design
 
 ## Code reuse
 
@@ -92,6 +92,6 @@ Lý do thứ ba là cột mốc di chuyển. Khách hàng của bạn rất hài
 
 ----
 
-# References
+## References
 
 * [Dive Into Design Partterms - Alexander Shvets]()

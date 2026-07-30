@@ -1,6 +1,6 @@
 # Site settings
-title: nabang1010 Blog
-SEOTitle: nabang1010 Blog
+title: Nguyen Anh Bang — Engineering Notes
+SEOTitle: Nguyen Anh Bang — Engineering Notes
 header-img: img/home-bg-3.jpg
 email: nabang1010.work@gmail.com
 description: "nabang1010 Blog | Machine Learning, Deeplearning, Computer Vision | This is NAB's personal blog"
@@ -12,8 +12,8 @@ github_repo: "https://github.com/nabang1010/nabang1010.github.io.git" # you code
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "NAB <br> Hanoi University of Science and Technology"
-sidebar-avatar: https://github.com/nabang1010.png # use absolute URL, seeing it's used in both `/` and `/about/`
-theme_default: "automatic"
+sidebar-avatar: /img/profile-avatar.jpg
+theme_default: "dark"
 
 
 
@@ -68,7 +68,7 @@ kramdown:
 #   3. Go to https://giscus.app, fill in this repo, pick a "Announcements"-like
 #      category (or create "Comments"), copy the generated repo-id/category-id below.
 giscus:
-  enable: true
+  enable: false
   repo: "nabang1010/nabang1010.github.io"
   repo-id: ""        # fill in from giscus.app
   category: "Comments"
@@ -98,7 +98,7 @@ featured-condition-size: 1
 
 
 # Progressive Web Apps
-chrome-tab-theme-color: "#000000"
+chrome-tab-theme-color: "#8bb8c8"
 service-worker: true
 
 

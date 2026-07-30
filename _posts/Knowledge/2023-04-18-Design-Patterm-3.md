@@ -16,7 +16,7 @@ tags:
   - Design Patterm
 ---
 
-# Design Principles
+## Design Principles
 
 ## Encapsulate What Varies (Nguyên tắc đóng gói những gì thay đổi)
 
@@ -571,6 +571,6 @@ Cấu trúc của các lớp này giống với mẫu **`Strategy`**, mà chúng
 
 ----
 
-# References
+## References
 
 * [Dive Into Design Partterms - Alexander Shvets]()

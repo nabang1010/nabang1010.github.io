@@ -1,97 +1,55 @@
-
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
-        </div>
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <div class="theme-switcher position-relative me-4">
-                            <div class="checkmark d-flex">
-                              <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 15 15" width="20" height="20" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000" style=" margin-top: 20px; background-color: #ffffff81; margin-left: 10px;">
-                                <mask id="m">
-                                  <circle class="masker" cx="7.5" cy="7.5" r="8.5" fill="#fff" />
-                                </mask>
-                                <g mask="url(#m)">
-                                  <path class="sun" fill= "#fff" d="M7.5 1.5v-1m0 13.99v-.998m6-5.997h1m-13 0h-1m2-4.996l-1-1m12 0l-1 1m-10 9.993l-1 1m12 0l-1-1m-2-4.997a2.999 2.999 0 01-3 2.998 2.999 2.999 0 113-2.998z" />
-                                </g>
-                                <path class="moon" fill="#fff" d="M1.66 11.362A6.5 6.5 0 007.693.502a7 7 0 11-6.031 10.86z" />
-                              </svg>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="{{ site.baseurl }}/">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ site.baseurl }}/about/">About</a>
-                    </li>
-                    <li>
-                        <a href="{{ site.baseurl }}/tags/">Tags</a>
-                    </li>
-                    <!-- {% for page in site.pages %}{% if page.title %}
-                    <li>
-                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                    </li>
-                    {% endif %}{% endfor %} -->
-                    {% if site.github_username %}
-                    <li>
-                        <a class="top-banner-sticker top-banner-sticker--follow" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}">&#9733; Follow</a>
-                    </li>
-                    {% endif %}
-                    {% if site.email %}
-                    <li>
-                        <a class="top-banner-sticker top-banner-sticker--contact" href="mailto:{{ site.email }}">&#9993; Contact</a>
-                    </li>
-                    {% endif %}
-                    <li class="search-icon">
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-nav-brand" href="{{ site.baseurl }}/" aria-label="{{ site.title }} home">
+        <span>NAB</span>
+        <small>Engineering notes</small>
+    </a>
+    <button class="site-nav-toggle" type="button" aria-controls="site-nav-menu" aria-expanded="false">
+        <span>Menu</span>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="site-nav-menu" id="site-nav-menu">
+        <ul>
+            <li><a{% if page.url == "/" or paginator.page %} class="is-active" aria-current="page"{% endif %} href="{{ site.baseurl }}/">All posts</a></li>
+            <li><a href="{{ site.baseurl }}/tags/#nvidia">NVIDIA</a></li>
+            <li><a href="{{ site.baseurl }}/tags/#gstreamer">GStreamer</a></li>
+            <li><a href="{{ site.baseurl }}/tags/#deepstream">DeepStream</a></li>
+            <li><a href="{{ site.baseurl }}/tags/#kubernetes">Kubernetes</a></li>
+            <li><a{% if page.url == "/about/" %} class="is-active" aria-current="page"{% endif %} href="{{ site.baseurl }}/about/">About</a></li>
+            <li><button class="search-icon" type="button">Search</button></li>
+        </ul>
     </div>
 </nav>
 <script>
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+    (function () {
+        var nav = document.currentScript.previousElementSibling;
+        var toggle = nav.querySelector('.site-nav-toggle');
+        var menu = nav.querySelector('.site-nav-menu');
 
-    var __HuxNav__ = {
-        close: function(){
-            $navbar.className = " ";
-            setTimeout(function(){
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        },
-        open: function(){
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+        function closeMenu(restoreFocus) {
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) toggle.focus();
         }
-    }
-    $toggle.addEventListener('click', function(e){
-        if ($navbar.className.indexOf('in') > 0) {
-            __HuxNav__.close()
-        }else{
-            __HuxNav__.open()
-        }
-    })
-    document.addEventListener('click', function(e){
-        if(e.target == $toggle) return;
-        if(e.target.className == 'icon-bar') return;
-        __HuxNav__.close();
-    })
+
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        document.addEventListener('click', function (event) {
+            if (nav.contains(event.target)) return;
+            closeMenu(false);
+        });
+
+        nav.addEventListener('keydown', function (event) {
+            if (event.key !== 'Escape' || !nav.classList.contains('is-open')) return;
+            event.preventDefault();
+            closeMenu(true);
+        });
+
+        menu.addEventListener('click', function (event) {
+            if (!event.target.closest('a, button')) return;
+            closeMenu(false);
+        });
+    })();
 </script>

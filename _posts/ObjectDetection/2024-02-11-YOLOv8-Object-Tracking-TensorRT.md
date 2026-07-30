@@ -3,7 +3,7 @@ layout: post
 title: "YOLOv8 Object Tracking TensorRT"
 subtitle: "YOLOv8 TensorRT - DeepSORT TensorRT - BYTETrack"
 author: "nabang1010"
-header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif"
+header-img: "img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack-poster.jpg"
 # header-style: text
 header-mask: 0.5
 lang: en
@@ -21,14 +21,6 @@ tags:
   - Object Tracking
 ---
 
-<div align="center">
-
-<h1>YOLOv8 Object Tracking TensorRT</h1>
-
-</div>
-
-
-
 Using OpenCV to capture video from camera or video file, then use **YOLOv8 TensorRT** to detect objects and **DeepSORT TensorRT** or **BYTETrack** to track objects.
 
 Support for both **NVIDIA dGPU** and **Jetson** devices.
@@ -38,7 +30,7 @@ All project [YOLOv8_Object_Tracking_TensorRT](https://github.com/nabang1010/YOLO
 ## Demo
 
 ### OpenCV + YOLOv8 + BYTETrack on NVIDA Geforce GTX 1660Ti
-![Demo BYTETrack](/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.gif "Demo BYTETrack")
+<img src="/img/in-post/2024/Feb/ObjectDetection/sample_yolov8_bytetrack.webp" alt="YOLOv8 and BYTETrack tracking vehicles in traffic footage" width="800" height="450" loading="lazy" decoding="async">
 
 
 
@@ -228,7 +220,7 @@ python3 yolov8_bytetrack_trt.py --show
 
 ---
 
-# References
+## References
 
 - [ultralytics](https://github.com/ultralytics/ultralytics)
 - [YOLOv8-TensorRT](https://github.com/triple-Mu/YOLOv8-TensorRT)

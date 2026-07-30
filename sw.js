@@ -6,8 +6,8 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v2';
-const RUNTIME = 'runtime-v2';
+const PRECACHE = 'precache-v5';
+const RUNTIME = 'runtime-v5';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   'nabang1010.github.io',
@@ -17,13 +17,6 @@ const HOSTNAME_WHITELIST = [
 const isWhitelistedRequest = (request) => {
   const url = new URL(request.url);
   return HOSTNAME_WHITELIST.indexOf(url.hostname) > -1;
-};
-
-const getFixedUrl = (request) => {
-  const url = new URL(request.url);
-  url.protocol = self.location.protocol;
-  url.search += (url.search ? '&' : '?') + 'cache-bust=' + Date.now();
-  return url.href;
 };
 
 const isNavigationRequest = (request) => {
@@ -74,18 +67,25 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  const cached = caches.match(request);
-  const fetched = fetch(getFixedUrl(request), { cache: 'no-store' });
-  const fetchedCopy = fetched.then((response) => response.clone());
+  if (isNavigationRequest(request)) {
+    event.respondWith(
+      fetch(request, { cache: 'no-store' })
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(RUNTIME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match('offline.html')))
+    );
+    return;
+  }
 
-  event.respondWith(
-    Promise.race([fetched.catch(() => cached), cached])
-      .then((response) => response || fetched)
-      .catch(() => caches.match('offline.html'))
-  );
+  const networkResponse = fetch(request);
 
   event.waitUntil(
-    Promise.all([fetchedCopy, caches.open(RUNTIME)])
+    Promise.all([networkResponse.then((response) => response.clone()), caches.open(RUNTIME)])
       .then(([response, cache]) => {
         if (response.ok) {
           return cache.put(request, response);
@@ -93,5 +93,9 @@ self.addEventListener('fetch', (event) => {
         return null;
       })
       .catch(() => {})
+  );
+
+  event.respondWith(
+    caches.match(request).then((cached) => cached || networkResponse)
   );
 });

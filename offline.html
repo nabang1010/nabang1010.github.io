@@ -1,24 +1,16 @@
 ---
 layout: default
 title: Offline
-description: "You are offline"
-header-img: "img/404-bg.jpg"
+description: "The network is unavailable. Previously visited notes may still be accessible."
 permalink: /offline.html
 ---
 
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>Offline</h1>
-					<span class="subheading">{{ page.description }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<section class="status-page">
+    <span class="status-code">OFF</span>
+    <div>
+        <span>/ Connection state</span>
+        <h1>You are offline.</h1>
+        <p>{{ page.description }}</p>
+        <button type="button" onclick="window.location.reload()">Try again <span aria-hidden="true">&rarr;</span></button>
+    </div>
+</section>

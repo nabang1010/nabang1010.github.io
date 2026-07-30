@@ -1,20 +1,19 @@
 ---
 layout: page
-title: "NABang1010 Profile"
-description: "Details about me"
+title: "Nguyen Anh Bang"
+hero-title: "Nguyen Anh Bang"
+section: "Resume"
+description: "Lead MLOps Engineer working across AI platforms, infrastructure, and computer vision."
 header-img: "img/profile_bg.jpg"
 hidden: true
+sidebar: false
 ---
 
 <div class="en post-container">
     <article class="markdown-body entry-content container-lg f5" itemprop="text">
-        <div class="cert-seal" style="float: right; margin: 16px;">&#9733; HUST<br>SANSLab<br>Researcher &#9733;</div>
         <div class="container-fluid p-0">
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        <span class="text-primary">NGUYEN ANH BANG</span>
-                    </h1>
                     <div class="subheading mb-5">
                         <h4>Lead MLOps Engineer, Camera AI Center &mdash; VinSmart Future (VSF) <br></h4>
                         <a href="https://www.hust.edu.vn" target="_blank" rel="noopener noreferrer">
@@ -391,29 +390,3 @@ hidden: true
         </div>
     </article>
 </div>
-<script type="text/javascript">
-    var $zh = document.querySelector(".zh");
-    var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
-    window.addEventListener('hashchange', _render);
-    function _render(){
-        var _hash = window.location.hash;
-        if(_hash == "#en"){
-            $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $zh.style.display = "none";
-        }else{
-            $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $en.style.display = "none";
-        }
-    }
-    function onLanChange(index){
-        if(index == 0){
-            window.location.hash = "#zh"
-        }else{
-            window.location.hash = "#en"
-        }
-    }
-    _render();
-</script>
