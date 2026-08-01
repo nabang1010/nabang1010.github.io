@@ -22,8 +22,7 @@ description: "Practical notes on production AI, MLOps, computer vision, and engi
 
     <div class="post-grid">
         {% for post in paginator.posts %}
-        {% capture card_tone %}{% cycle 'tone-orange', 'tone-coral', 'tone-yellow', 'tone-blue' %}{% endcapture %}
-        {% include post-card.html post=post tone=card_tone %}
+        {% include post-card.html post=post %}
         {% endfor %}
     </div>
 </section>
