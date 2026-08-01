@@ -1,6 +1,24 @@
 {% assign card_post = include.post %}
 {% assign card_tag = card_post.tags | first | default: card_post.section | default: "Note" %}
-<article class="post-card {{ include.tone | strip }}">
+{% assign card_tag_key = card_tag | strip %}
+
+{% comment %} Tone is keyed off the tag itself so a given tag always renders the same color everywhere, not by grid position. {% endcomment %}
+{% case card_tag_key %}
+    {% when "Docker" or "Kubernetes" or "CMake" or "Linux Command" or "Ubuntu Command" or "Tool" or "Tutorial" %}
+        {% assign card_tone = "" %}
+    {% when "NVIDIA" or "GStreamer" or "DeepStream" or "Object Detection" or "Object Tracking" %}
+        {% assign card_tone = "tone-blue" %}
+    {% when "Design Patterm" or "oop" or "Knowledge" %}
+        {% assign card_tone = "tone-yellow" %}
+    {% when "Image Classification" or "VGG16" or "YOLO" or "Recommendation System" or "Collaborative Filtering" %}
+        {% assign card_tone = "tone-coral" %}
+    {% else %}
+        {% assign tone_options = "|tone-blue|tone-yellow|tone-coral" | split: "|" %}
+        {% assign tone_index = card_tag_key.size | modulo: 4 %}
+        {% assign card_tone = tone_options[tone_index] %}
+{% endcase %}
+
+<article class="post-card {{ card_tone }}">
     <a class="post-card-link" href="{{ card_post.url | prepend: site.baseurl }}">
         <div class="post-card-meta">
             <span>{{ card_tag }}</span>
