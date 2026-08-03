@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kubectl apply command"
+title: "[Core] - kubectl apply command"
 subtitle: "Reconciling manifests and managing field ownership"
 author: "nabang1010"
 date: 2024-08-16 20:00:00 +0700

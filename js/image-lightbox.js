@@ -13,7 +13,7 @@
         var dialog = lightbox.querySelector('.image-lightbox-dialog');
         var viewport = lightbox.querySelector('[data-lightbox-viewport]');
         var preview = lightbox.querySelector('[data-lightbox-image]');
-        var caption = lightbox.querySelector('[data-lightbox-caption]');
+        var title = lightbox.querySelector('[data-lightbox-title]');
         var scaleOutput = lightbox.querySelector('[data-lightbox-scale]');
         var closeButton = lightbox.querySelector('[data-lightbox-action="close"]');
         var zoomInButton = lightbox.querySelector('[data-lightbox-action="zoom-in"]');
@@ -99,9 +99,10 @@
             sourceImage = image;
             previousFocus = document.activeElement;
             var imageCaption = getCaption(image);
+            var imageTitle = imageCaption || image.alt || 'Article image';
 
-            caption.textContent = imageCaption;
-            caption.hidden = !imageCaption;
+            title.textContent = imageTitle;
+            title.title = imageTitle;
             preview.alt = image.alt || imageCaption || 'Article image';
             preview.src = image.currentSrc || image.src;
             lightbox.classList.add('is-open');

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cluster Networking"
+title: "[Networking] - Cluster Networking"
 subtitle: "Addressing, ports, and an end-to-end troubleshooting model"
 author: "nabang1010"
 date: 2024-08-25 20:00:00 +0700
@@ -9,6 +9,7 @@ catalog: true
 section: Knowledge
 series: kubernetes-course
 lesson: 25
+course-icon: /img/kubernetes-course/icons/25-page-icon.png
 seo-keywords: [kubernetes, cluster-networking, ports, pod-network, service-network]
 tags: [Kubernetes, Networking]
 ---

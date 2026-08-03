@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kube-apiserver"
+title: "[Core] - kube-apiserver"
 subtitle: "The authenticated and validated front door to cluster state"
 author: "nabang1010"
 date: 2024-08-04 20:00:00 +0700

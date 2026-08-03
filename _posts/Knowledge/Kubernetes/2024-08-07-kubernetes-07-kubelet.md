@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Kubelet"
+title: "[Core] - Kubelet"
 subtitle: "The node agent that turns Pod specifications into running containers"
 author: "nabang1010"
 date: 2024-08-07 20:00:00 +0700

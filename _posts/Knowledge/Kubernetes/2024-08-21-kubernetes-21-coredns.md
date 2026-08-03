@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CoreDNS"
+title: "[Networking] - CoreDNS"
 subtitle: "How Kubernetes provides cluster DNS"
 author: "nabang1010"
 date: 2024-08-21 20:00:00 +0700

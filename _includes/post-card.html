@@ -24,7 +24,12 @@
             <span>{{ card_tag }}</span>
             <time datetime="{{ card_post.date | date_to_xmlschema }}">{{ card_post.date | date: "%B %-d, %Y" }}</time>
         </div>
-        <h2>{{ card_post.title }}</h2>
+        <div class="post-card-title">
+            {% if card_post.course-icon %}
+            <img class="post-card-icon" src="{{ card_post.course-icon | relative_url }}?v=notion-original-20260803" alt="" width="36" height="36" loading="lazy" decoding="async">
+            {% endif %}
+            <h2>{{ card_post.title }}</h2>
+        </div>
         <span class="post-card-arrow" aria-hidden="true">&rarr;</span>
     </a>
 </article>

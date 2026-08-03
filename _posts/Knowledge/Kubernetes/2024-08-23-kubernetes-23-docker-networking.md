@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker Networking"
+title: "[Networking] - Docker Networking"
 subtitle: "Bridge, host, overlay, and published-port behavior"
 author: "nabang1010"
 date: 2024-08-23 20:00:00 +0700
@@ -10,8 +10,8 @@ section: Knowledge
 series: kubernetes-course
 lesson: 23
 course-icon: /img/kubernetes-course/icons/23-page-icon.png
-seo-keywords: [docker, networking, bridge, overlay, port-publishing]
-tags: [Docker, Networking]
+seo-keywords: [kubernetes, docker, networking, bridge, overlay, port-publishing]
+tags: [Kubernetes, Networking]
 ---
 
 Docker Engine connects containers through network drivers. Understanding these drivers is useful for local container work, but Kubernetes networking is configured through CRI and CNI rather than Docker's networking model.

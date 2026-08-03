@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kube-scheduler"
+title: "[Core] - kube-scheduler"
 subtitle: "Filtering and scoring nodes for pending Pods"
 author: "nabang1010"
 date: 2024-08-06 20:00:00 +0700

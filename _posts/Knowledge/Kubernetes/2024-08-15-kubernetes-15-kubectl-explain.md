@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kubectl explain command"
+title: "[Core] - kubectl explain command"
 subtitle: "Inspecting the API schema from the command line"
 author: "nabang1010"
 date: 2024-08-15 20:00:00 +0700

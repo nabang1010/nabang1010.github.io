@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Namespace"
+title: "[Networking] - Namespace"
 subtitle: "The isolation primitive behind Pod networking"
 author: "nabang1010"
 date: 2024-08-22 20:00:00 +0700
@@ -9,6 +9,7 @@ catalog: true
 section: Knowledge
 series: kubernetes-course
 lesson: 22
+course-icon: /img/kubernetes-course/icons/22-page-icon.png
 seo-keywords: [linux, network-namespace, veth, container, kubernetes]
 tags: [Kubernetes, Linux, Networking]
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker vs containerd"
+title: "[Core] - Docker vs containerd"
 subtitle: "Separate image building, runtime execution, and orchestration"
 author: "nabang1010"
 date: 2024-08-02 20:00:00 +0700
@@ -43,7 +43,7 @@ kubectl get nodes -o wide
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.nodeInfo.containerRuntimeVersion}{"\n"}{end}'
 ```
 
-{% include course-figures.html lesson="02" from=8 to=10 topic="Container runtime command-line tools" %}
+{% include course-figures.html lesson="02" from=8 to=11 topic="Container runtime command-line tools" %}
 
 ## Runtime troubleshooting with crictl
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gateway"
+title: "[Networking] - Gateway"
 subtitle: "Understanding next hops, default routes, and the Gateway API"
 author: "nabang1010"
 date: 2024-08-19 20:00:00 +0700

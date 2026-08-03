@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "K8s Architecture"
+title: "[Core] - K8s Architecture"
 subtitle: "How the control plane and worker nodes cooperate"
 author: "nabang1010"
 date: 2024-08-01 20:00:00 +0700

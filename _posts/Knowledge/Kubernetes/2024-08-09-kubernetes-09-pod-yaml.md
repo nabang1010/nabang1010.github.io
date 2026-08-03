@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pod with YAML"
+title: "[Core] - Pod with YAML"
 subtitle: "Read, write, validate, and troubleshoot a Pod manifest"
 author: "nabang1010"
 date: 2024-08-09 20:00:00 +0700

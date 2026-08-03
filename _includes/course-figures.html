@@ -7,7 +7,7 @@
     {% assign figure_number = figure_number | slice: -2, 2 %}
     {% capture figure_path %}/img/kubernetes-course/figures/{{ include.lesson }}/{{ include.lesson }}-figure-{{ figure_number }}.png{% endcapture %}
     <figure class="course-figure">
-        <img src="{{ figure_path | relative_url }}" alt="{{ include.topic }}, figure {{ figure_index }}" loading="lazy" decoding="async">
+        <img src="{{ figure_path | relative_url }}?v=original-20260803" alt="{{ include.topic }}, figure {{ figure_index }}" loading="lazy" decoding="async">
         {% if figure_total > 1 %}
         <figcaption>{{ include.topic }} - figure {{ figure_index }} of {{ figure_end }}.</figcaption>
         {% else %}

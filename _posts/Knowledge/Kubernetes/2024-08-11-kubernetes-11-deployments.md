@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deployments"
+title: "[Core] - Deployments"
 subtitle: "Declarative updates for stateless applications"
 author: "nabang1010"
 date: 2024-08-11 20:00:00 +0700

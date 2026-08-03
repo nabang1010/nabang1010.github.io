@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DNS"
+title: "[Networking] - DNS"
 subtitle: "Resolving names before debugging cluster discovery"
 author: "nabang1010"
 date: 2024-08-20 20:00:00 +0700

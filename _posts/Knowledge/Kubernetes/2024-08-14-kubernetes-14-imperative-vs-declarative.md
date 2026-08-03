@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Imperative vs Declarative"
+title: "[Core] - Imperative vs Declarative"
 subtitle: "Choosing commands or version-controlled desired state"
 author: "nabang1010"
 date: 2024-08-14 20:00:00 +0700

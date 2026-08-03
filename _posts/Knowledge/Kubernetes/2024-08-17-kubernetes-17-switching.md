@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Switching"
+title: "[Networking] - Switching"
 subtitle: "How Layer 2 forwarding supports container networks"
 author: "nabang1010"
 date: 2024-08-17 20:00:00 +0700

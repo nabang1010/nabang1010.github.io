@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "etcd"
+title: "[Core] - etcd"
 subtitle: "The consistent key-value store behind the Kubernetes API"
 author: "nabang1010"
 date: 2024-08-03 20:00:00 +0700
