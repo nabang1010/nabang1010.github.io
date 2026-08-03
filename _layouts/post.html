@@ -27,6 +27,9 @@ layout: default
 
     <div class="article-column">
         <header class="article-heading">
+            {% if page.course-icon %}
+            <img class="article-course-icon" src="{{ page.course-icon | relative_url }}" alt="" width="72" height="72">
+            {% endif %}
             <div class="article-meta">
                 <a href="{{ site.baseurl }}/tags/#{{ primary_tag | slugify }}">{{ primary_tag }}</a>
                 <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B, %-d %Y" }}</time>
@@ -78,6 +81,8 @@ layout: default
         </div>
     </aside>
 </article>
+
+{% include image-lightbox.html %}
 
 <script>
     (function () {

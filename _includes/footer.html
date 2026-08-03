@@ -18,6 +18,9 @@
 </footer>
 
 <script src="{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}"></script>
+{% if page.layout == "post" %}
+<script src="{{ "/js/image-lightbox.js" | prepend: site.baseurl }}" defer></script>
+{% endif %}
 
 {% if site.service-worker %}
 <script>
