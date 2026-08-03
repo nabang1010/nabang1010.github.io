@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kube-controller-manager"
+title: "[Core] - kube-controller-manager"
 subtitle: "Reconciliation loops that keep desired and actual state aligned"
 author: "nabang1010"
 date: 2024-08-05 20:00:00 +0700

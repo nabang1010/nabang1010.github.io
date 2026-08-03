@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CNI"
+title: "[Networking] - CNI"
 subtitle: "How runtimes configure Pod network namespaces"
 author: "nabang1010"
 date: 2024-08-24 20:00:00 +0700

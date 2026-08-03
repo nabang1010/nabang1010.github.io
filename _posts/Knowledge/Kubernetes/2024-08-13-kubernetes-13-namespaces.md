@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Namespace"
+title: "[Core] - Namespace"
 subtitle: "Organizing namespaced resources without assuming complete isolation"
 author: "nabang1010"
 date: 2024-08-13 20:00:00 +0700

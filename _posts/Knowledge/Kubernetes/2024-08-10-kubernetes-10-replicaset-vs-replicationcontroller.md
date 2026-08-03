@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ReplicaSets vs Replication Controller"
+title: "[Core] - ReplicaSets vs Replication Controller"
 subtitle: "Why Deployments and ReplicaSets replaced the older controller"
 author: "nabang1010"
 date: 2024-08-10 20:00:00 +0700

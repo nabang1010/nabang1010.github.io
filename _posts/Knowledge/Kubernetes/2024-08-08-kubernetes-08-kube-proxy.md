@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "kube-proxy"
+title: "[Core] - kube-proxy"
 subtitle: "How virtual Service addresses reach Pod endpoints"
 author: "nabang1010"
 date: 2024-08-08 20:00:00 +0700

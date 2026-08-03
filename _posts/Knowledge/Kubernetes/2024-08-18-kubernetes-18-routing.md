@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Routing"
+title: "[Networking] - Routing"
 subtitle: "Moving packets between Pod, node, and external networks"
 author: "nabang1010"
 date: 2024-08-18 20:00:00 +0700

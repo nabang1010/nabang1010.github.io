@@ -6,8 +6,8 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v7';
-const RUNTIME = 'runtime-v7';
+const PRECACHE = 'precache-v9';
+const RUNTIME = 'runtime-v9';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   'nabang1010.github.io',
@@ -23,6 +23,8 @@ const isNavigationRequest = (request) => {
   const accept = request.headers.get('accept') || '';
   return request.mode === 'navigate' || (request.method === 'GET' && accept.includes('text/html'));
 };
+
+const isImageRequest = (request) => request.destination === 'image';
 
 const endWithExtension = (request) => Boolean(new URL(request.url).pathname.match(/\.\w+$/));
 
@@ -78,6 +80,21 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => caches.match(request).then((cached) => cached || caches.match('offline.html')))
+    );
+    return;
+  }
+
+  if (isImageRequest(request)) {
+    event.respondWith(
+      fetch(request, { cache: 'no-cache' })
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(RUNTIME).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
     );
     return;
   }

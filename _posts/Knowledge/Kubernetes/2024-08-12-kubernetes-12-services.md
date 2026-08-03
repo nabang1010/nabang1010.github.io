@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Service"
+title: "[Core] - Service"
 subtitle: "Stable discovery and traffic routing for changing Pods"
 author: "nabang1010"
 date: 2024-08-12 20:00:00 +0700
