@@ -1,0 +1,18 @@
+{% assign figure_start = include.from | plus: 0 %}
+{% assign figure_end = include.to | plus: 0 %}
+{% assign figure_total = figure_end | minus: figure_start | plus: 1 %}
+<div class="course-figure-sequence" aria-label="{{ include.topic }}">
+    {% for figure_index in (figure_start..figure_end) %}
+    {% capture figure_number %}0{{ figure_index }}{% endcapture %}
+    {% assign figure_number = figure_number | slice: -2, 2 %}
+    {% capture figure_path %}/img/kubernetes-course/figures/{{ include.lesson }}/{{ include.lesson }}-figure-{{ figure_number }}.png{% endcapture %}
+    <figure class="course-figure">
+        <img src="{{ figure_path | relative_url }}" alt="{{ include.topic }}, figure {{ figure_index }}" loading="lazy" decoding="async">
+        {% if figure_total > 1 %}
+        <figcaption>{{ include.topic }} - figure {{ figure_index }} of {{ figure_end }}.</figcaption>
+        {% else %}
+        <figcaption>{{ include.topic }}.</figcaption>
+        {% endif %}
+    </figure>
+    {% endfor %}
+</div>
